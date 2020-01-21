@@ -32,7 +32,7 @@ export PS1="\n\[$(tput smul)\]\w\[$(tput rmul)\]\n\u@\h\$(__git_ps1):\$ \[$(tput
 ## General
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias findf="find ./ | grep $1"
-
+alias fif="grep -rn"
 ## Elixir
 
 alias phx='mix ecto.create && mix ecto.migrate && mix phx.server'

@@ -13,6 +13,9 @@ set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 set undodir=~/.vim/undo
 
+" NERDTree
+map <silent> <C-n> :NERDTreeFind<CR>
+
 
 syntax enable
 
