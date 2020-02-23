@@ -12,8 +12,6 @@ then
 fi
 export PATH
 
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
 
 # User specific aliases and functions
 
@@ -33,6 +31,10 @@ export PS1="\n\[$(tput smul)\]\w\[$(tput rmul)\]\n\u@\h\$(__git_ps1):\$ \[$(tput
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias findf="find ./ | grep $1"
 alias fif="grep -rn"
+
+## Heroku
+alias herop='cd `git rev-parse --show-toplevel` && git subtree push --prefix hello_app heroku master'
+
 ## Elixir
 
 alias phx='mix ecto.create && mix ecto.migrate && mix phx.server'
@@ -50,3 +52,4 @@ function ps1_help(){
   echo "  <> => diverged"
   echo "   = => no difference"
 }
+
