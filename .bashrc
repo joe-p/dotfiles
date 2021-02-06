@@ -31,12 +31,8 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 shopt -s globstar
 
-
-if [ -d "$HOME/.asdf" ] 
-  . $HOME/.asdf/asdf.sh
-  . $HOME/.asdf/completions/asdf.bash
-fi
-
+[ -f "$HOME/.asdf/asdf.sh" ] && . $HOME/.asdf/asdf.sh
+[ -f "$HOME/.asdf/completions/asdf.bash" ] && . $HOME/.asdf/completions/asdf.bash
 
 source ~/.git-prompt.sh
 
