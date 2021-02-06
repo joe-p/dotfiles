@@ -12,8 +12,31 @@ then
 fi
 export PATH
 
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=erasedups
 
-# User specific aliases and functions
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+shopt -s globstar
+
+
+if [ -d "$HOME/.asdf" ] 
+  . $HOME/.asdf/asdf.sh
+  . $HOME/.asdf/completions/asdf.bash
+fi
+
 
 source ~/.git-prompt.sh
 
@@ -24,21 +47,10 @@ GIT_PS1_SHOWUPSTREAM="auto"
 
 export PS1="\n\[$(tput smul)\]\w\[$(tput rmul)\]\n\u@\h\$(__git_ps1):\$ \[$(tput cnorm)\]"
 
-
 #### Aliases
 
 ## General
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias findf="find ./ | grep $1"
-alias fif="grep -rn"
-
-## Heroku
-alias herop='cd `git rev-parse --show-toplevel` && git subtree push --prefix hello_app heroku master'
-
-## Elixir
-
-alias phx='mix ecto.create && mix ecto.migrate && mix phx.server'
-
 
 #### Functions
 function ps1_help(){
