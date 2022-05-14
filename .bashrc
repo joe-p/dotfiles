@@ -1,12 +1,9 @@
 # .bashrc
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
-fi
-
-if [ -f "$HOME/.mrcy_bash" ]; then
-  . "$HOME/.mrcy_bash"
 fi
 
 # User specific environment
@@ -33,7 +30,7 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-shopt -s globstar
+shopt -s globstar 2> /dev/null
 
 [ -f "$HOME/.asdf/asdf.sh" ] && . $HOME/.asdf/asdf.sh
 [ -f "$HOME/.asdf/completions/asdf.bash" ] && . $HOME/.asdf/completions/asdf.bash
