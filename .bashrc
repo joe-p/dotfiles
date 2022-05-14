@@ -38,6 +38,8 @@ shopt -s globstar 2> /dev/null
 
 [ -f "$HOME/.asdf/asdf.sh" ] && . $HOME/.asdf/asdf.sh
 [ -f "$HOME/.asdf/completions/asdf.bash" ] && . $HOME/.asdf/completions/asdf.bash
+[ -f "/opt/homebrew/opt/asdf/libexec/asdf.sh" ] && . /opt/homebrew/opt/asdf/libexec/asdf.sh
+[ -f "/opt/homebrew/etc/bash_completion.d" ] && /opt/homebrew/etc/bash_completion.d
 
 source ~/.git-prompt.sh
 
