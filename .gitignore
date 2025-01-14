@@ -6,3 +6,5 @@ README.md
 !.zsh
 !.zsh/*
 !.wezterm.lua
+!.config
+!.config/nvim
