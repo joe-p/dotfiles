@@ -12,7 +12,13 @@
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export PATH=/opt/homebrew/bin:$PATH
 export PATH="$PATH:/Users/joe/.local/bin"
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+# export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+
+####################
+# go
+####################
+export GOPATH="$HOME/go"
 
 ####################
 # Emscripten
