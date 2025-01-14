@@ -1,0 +1,3 @@
+[submodule "/Users/joe/.zsh/pure"]
+	path = /Users/joe/.zsh/pure
+	url = https://github.com/sindresorhus/pure
