@@ -9,8 +9,6 @@
 # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 # echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 
-# asdf
-# git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
 
 ####################
 # PATH modifications
@@ -21,11 +19,21 @@ export PATH=/opt/homebrew/bin:$PATH
 export PATH="$PATH:/Users/joe/.local/bin"
 
 ####################
+# Emscripten
+####################
+export EMSDK_QUIET=1
+source "/Users/joe/git/other/emsdk/emsdk_env.sh"
+
+####################
 # Aliases
 ####################
 alias ls='ls --color'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
+alias vim='nvim'
+alias code='cursor'
+alias lzg='lazygit'
+alias lzd='lazydocker'
+alias og='cursor `tv git-repos`'
 ####################
 # Powerlevel10k
 ####################
@@ -49,20 +57,7 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-  autoload -Uz compinit
-  compinit
 fi
-
-####################
-# asdf
-####################
-
-. "$HOME/.asdf/asdf.sh"
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-# initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
 
 ####################
 # JetBrains
@@ -152,3 +147,11 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 autoload -Uz compinit && compinit
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+  eval "$($HOME/.local/bin/mise activate zsh --shims)"
+else
+  eval "$($HOME/.local/bin/mise activate zsh)"
+fi
+
