@@ -5,15 +5,15 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- Change font and color scheme
-config.font = wezterm.font 'MesloLGM Nerd Font Mono'
+config.font = wezterm.font("MesloLGM Nerd Font Mono")
 config.color_scheme = "Catppuccin Mocha" -- or Macchiato, Frappe, Latte
-config.font_size = 13.0
+config.font_size = 14
 
 -- wezterm.action is used often, so save it as a local variable
 local act = wezterm.action
 
 -- The status in the top right should always be the active worksapce
-wezterm.on('update-right-status', function(window, pane)
+wezterm.on("update-right-status", function(window, pane)
 	window:set_right_status(window:active_workspace())
 end)
 
@@ -29,7 +29,7 @@ local function select_workspace(window, pane)
 		"^.git$",
 		"--max-depth=3",
 		"--prune", -- don't search .git/
-		os.getenv("HOME") .. "/git"
+		os.getenv("HOME") .. "/git",
 	})
 
 	if not success then
@@ -51,10 +51,7 @@ local function select_workspace(window, pane)
 					wezterm.log_info("Cancelled")
 				else
 					wezterm.log_info("Selected " .. label)
-					win:perform_action(
-						act.SwitchToWorkspace({ name = id, spawn = { cwd = label } }),
-						pane
-					)
+					win:perform_action(act.SwitchToWorkspace({ name = id, spawn = { cwd = label } }), pane)
 				end
 			end),
 			fuzzy = true,
@@ -67,19 +64,19 @@ end
 
 config.keys = {
 	{
-		key = 'P',
-		mods = 'SUPER',
+		key = "P",
+		mods = "SUPER",
 		action = act.ActivateCommandPalette,
 	},
 	{
-		key = 'd',
-		mods = 'SUPER',
-		action = act.SwitchToWorkspace({ name = "default" })
+		key = "d",
+		mods = "SUPER",
+		action = act.SwitchToWorkspace({ name = "default" }),
 	},
 	{
-		key = 'w',
-		mods = 'SUPER',
-		action = wezterm.action_callback(select_workspace)
+		key = "w",
+		mods = "SUPER",
+		action = wezterm.action_callback(select_workspace),
 	},
 }
 
