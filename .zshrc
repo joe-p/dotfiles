@@ -6,19 +6,20 @@
 # curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 ####################
+# variables
+####################
+export GOPATH="$HOME/go"
+export EDITOR="nvim"
+
+####################
 # PATH modifications
 ####################
 
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export PATH=/opt/homebrew/bin:$PATH
 export PATH="$PATH:/Users/joe/.local/bin"
+export PATH=$GOPATH/bin:$PATH
 # export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-
-
-####################
-# go
-####################
-export GOPATH="$HOME/go"
 
 ####################
 # Emscripten
@@ -112,3 +113,4 @@ fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 zstyle :prompt:pure:git:stash show yes
 prompt pure
+
