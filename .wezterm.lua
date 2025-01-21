@@ -6,7 +6,7 @@ local config = wezterm.config_builder()
 
 -- Change font and color scheme
 config.font = wezterm.font("MesloLGM Nerd Font Mono")
-config.color_scheme = "Catppuccin Mocha" -- or Macchiato, Frappe, Latte
+config.color_scheme = "Tokyo Night Moon"
 config.font_size = 14
 
 -- wezterm.action is used often, so save it as a local variable
