@@ -4,3 +4,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = https://github.com/joe-p/kickstart.nvim.git
+[submodule ".zsh/zsh-vi-mode"]
+	path = .zsh/zsh-vi-mode
+	url = https://github.com/jeffreytse/zsh-vi-mode/

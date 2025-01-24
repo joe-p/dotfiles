@@ -114,3 +114,7 @@ autoload -U promptinit; promptinit
 zstyle :prompt:pure:git:stash show yes
 prompt pure
 
+#####################
+# Vi Mode
+#####################
+source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
