@@ -36,7 +36,6 @@ alias vim='nvim'
 alias code='cursor'
 alias lzg='lazygit'
 alias lzd='lazydocker'
-alias og='cursor `tv git-repos`'
 
 ####################
 # brew

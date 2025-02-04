@@ -51,7 +51,18 @@ local function select_workspace(window, pane)
 					wezterm.log_info("Cancelled")
 				else
 					wezterm.log_info("Selected " .. label)
-					win:perform_action(act.SwitchToWorkspace({ name = id, spawn = { cwd = label } }), pane)
+
+					local tab_title = label:match("^.*/(.*)$")
+					local tabs = win:mux_window():tabs()
+					for i = 1, #tabs do
+						if tabs[i]:get_title() == tab_title then
+							tabs[i]:activate()
+							return
+						end
+					end
+
+					win:perform_action(act.SpawnCommandInNewTab({ cwd = label }), pane)
+					win:active_tab():set_title(tab_title)
 				end
 			end),
 			fuzzy = true,
