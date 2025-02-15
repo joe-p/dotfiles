@@ -21,7 +21,7 @@ end)
 -- based on https://github.com/wez/wezterm/discussions/4796
 local function select_workspace(window, pane)
 	local projects = {
-		{ label = os.getenv("HOME") .. ".config/nvim", id = "nvim" },
+		{ label = os.getenv("HOME") .. "/.config/nvim", id = "nvim" },
 	}
 
 	local success, stdout, stderr = wezterm.run_child_process({
