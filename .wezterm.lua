@@ -20,7 +20,9 @@ end)
 -- Function for fuzzy picking a git repo as a workspace
 -- based on https://github.com/wez/wezterm/discussions/4796
 local function select_workspace(window, pane)
-	local projects = {}
+	local projects = {
+		{ label = os.getenv("HOME") .. ".config/nvim", id = "nvim" },
+	}
 
 	local success, stdout, stderr = wezterm.run_child_process({
 		"/opt/homebrew/bin/fd",
@@ -85,7 +87,7 @@ config.keys = {
 		action = act.SwitchToWorkspace({ name = "default" }),
 	},
 	{
-		key = "w",
+		key = "k",
 		mods = "SUPER",
 		action = wezterm.action_callback(select_workspace),
 	},
