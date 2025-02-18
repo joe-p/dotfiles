@@ -1,6 +1,4 @@
-####################
-# Installations
-####################
+autoload -Uz compinit && compinit
 
 ####################
 # variables
@@ -17,6 +15,7 @@ export PATH=/opt/homebrew/bin:$PATH
 export PATH="$PATH:/Users/joe/.local/bin"
 export PATH=$GOPATH/bin:$PATH
 # export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 
 ####################
 # Emscripten
@@ -45,29 +44,13 @@ then
 fi
 
 ####################
-# JetBrains
-####################
-
-edit() {
-    if [[ -v $PYCHARM_TERMINAL ]]
-    then
-        touch $1 && pycharm $1
-    elif [[ -v $RUBYMINE_HOSTED ]]
-    then
-        touch $1 && rubymine $1
-    else
-        code
-    fi
-}
-
-####################
 # Completions
 ####################
 
+eval `dircolors -b`
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 if [[ "$TERM_PROGRAM" == "vscode" ]]; then
   eval "$($HOME/.local/bin/mise activate zsh --shims)"
@@ -96,11 +79,6 @@ bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
 ####################
-# Shell Integrations
-####################
-eval "$(fzf --zsh)"
-
-####################
 # Pure
 ####################
 fpath+=($HOME/.zsh/pure)
@@ -112,3 +90,4 @@ prompt pure
 # Vi Mode
 #####################
 source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+zvm_after_init_commands+=('source <(fzf --zsh)')
