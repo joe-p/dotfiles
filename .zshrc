@@ -4,7 +4,13 @@ autoload -Uz compinit && compinit
 # variables
 ####################
 export GOPATH="$HOME/go"
-export EDITOR="nvim"
+if [ -n "${NVIM}" ]; then
+    export VISUAL="nvr --remote-wait +'set bufhidden=wipe'"
+    export EDITOR="nvr --remote-wait +'set bufhidden=wipe'"
+else
+    export VISUAL="nvim"
+    export EDITOR="nvim"
+fi
 
 ####################
 # PATH modifications
@@ -20,18 +26,31 @@ export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 ####################
 # Emscripten
 ####################
-export EMSDK_QUIET=1
-source "/Users/joe/git/other/emsdk/emsdk_env.sh"
+# export EMSDK_QUIET=1
+# source "/Users/joe/git/other/emsdk/emsdk_env.sh"
 
 ####################
 # Aliases
 ####################
 alias ls='ls --color'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias vim='nvim'
 alias code='cursor'
 alias lzg='lazygit'
 alias lzd='lazydocker'
+
+####################
+# Functions
+####################
+
+# open in current nvim if in terminal buffer
+# https://github.com/mhinz/neovim-remote
+function vim {
+    if [ -z "${NVIM}" ]; then
+        nvim "$@"
+    else
+        nvr --remote-wait +'set bufhidden=wipe' "$@"
+    fi
+}
 
 ####################
 # brew

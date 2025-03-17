@@ -4,9 +4,24 @@ local wezterm = require("wezterm")
 -- Build the initial config
 local config = wezterm.config_builder()
 
+local function get_appearance()
+	if wezterm.gui then
+		return wezterm.gui.get_appearance()
+	end
+	return "Dark"
+end
+
+local function scheme_for_appearance()
+	if get_appearance():find("Dark") then
+		return "Tokyo Night Moon"
+	else
+		return "Tokyo Night Day"
+	end
+end
+
 -- Change font and color scheme
 config.font = wezterm.font("MesloLGM Nerd Font Mono")
-config.color_scheme = "Tokyo Night Moon"
+config.color_scheme = scheme_for_appearance()
 config.font_size = 14
 
 -- wezterm.action is used often, so save it as a local variable
