@@ -5,8 +5,8 @@ autoload -Uz compinit && compinit
 ####################
 export GOPATH="$HOME/go"
 if [ -n "${NVIM}" ]; then
-    export VISUAL="nvr --remote-wait +'set bufhidden=wipe'"
-    export EDITOR="nvr --remote-wait +'set bufhidden=wipe'"
+    export VISUAL="nvr --remote-wait"
+    export EDITOR="nvr --remote-wait"
 else
     export VISUAL="nvim"
     export EDITOR="nvim"
@@ -48,7 +48,7 @@ function vim {
     if [ -z "${NVIM}" ]; then
         nvim "$@"
     else
-        nvr --remote-wait +'set bufhidden=wipe' "$@"
+        nvr --remote-wait "$@"
     fi
 }
 
