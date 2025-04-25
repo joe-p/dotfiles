@@ -48,7 +48,7 @@ function vim {
     if [ -z "${NVIM}" ]; then
         nvim "$@"
     else
-        nvr --remote-wait "$@"
+        nvr --remote "$@"
     fi
 }
 
