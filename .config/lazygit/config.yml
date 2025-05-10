@@ -1,2 +1,4 @@
 os:
     edit: 'nvr --remote-wait {{filename}}'
+promptToReturnFromSubprocess: false
+quitOnTopLevelReturn: true
