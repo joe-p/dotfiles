@@ -79,7 +79,7 @@ local function select_workspace(window, pane)
 					end
 
 					win:perform_action(
-						act.SpawnCommandInNewTab({ args = { "/opt/homebrew/bin/nvim" }, cwd = label }),
+						act.SpawnCommandInNewTab({ args = { "/bin/zsh", "-l", "-c", "nvim" }, cwd = label }),
 						pane
 					)
 					win:active_tab():set_title(tab_title)
