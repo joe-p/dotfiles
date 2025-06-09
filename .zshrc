@@ -22,6 +22,7 @@ export PATH="$PATH:/Users/joe/.local/bin"
 export PATH=$GOPATH/bin:$PATH
 # export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/Users/joe/.bun/bin:$PATH"
 
 ####################
 # Emscripten
@@ -105,8 +106,4 @@ autoload -U promptinit; promptinit
 zstyle :prompt:pure:git:stash show yes
 prompt pure
 
-#####################
-# Vi Mode
-#####################
-source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-zvm_after_init_commands+=('source <(fzf --zsh)')
+source <(fzf --zsh)
