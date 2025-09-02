@@ -1,8 +1,9 @@
 os:
-    edit: 'nvr --remote-wait {{filename}}'
+  edit: 'nvr --remote-wait {{filename}}'
 promptToReturnFromSubprocess: false
 quitOnTopLevelReturn: true
 
 git:
+  overrideGpg: true
   paging:
     externalDiffCommand: "difft --color=always"
