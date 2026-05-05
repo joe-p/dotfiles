@@ -8,5 +8,5 @@
 	path = .zsh/zsh-vi-mode
 	url = https://github.com/jeffreytse/zsh-vi-mode/
 [submodule ".pi"]
-	path = .pi
+	path = .pi/agent
 	url = https://github.com/joe-p/pi-agent-config
