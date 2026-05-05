@@ -9,5 +9,11 @@ README.md
 !.config
 !.config/nvim
 !.config/lazygit
+<<<<<<< Updated upstream
 !.pi/*
 !.pi/agent
+=======
+!.pi
+!.config/mise
+!.config/mise/config.toml
+>>>>>>> Stashed changes
