@@ -37,6 +37,7 @@ end)
 local function select_workspace(window, pane)
 	local projects = {
 		{ label = os.getenv("HOME") .. "/.config/nvim", id = "nvim" },
+		{ label = os.getenv("HOME") .. "/.pi/agent", id = "pi-agent-config" },
 	}
 
 	local success, stdout, stderr = wezterm.run_child_process({
