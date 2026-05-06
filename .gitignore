@@ -13,3 +13,5 @@ README.md
 !.pi/agent
 !.config/mise
 !.config/mise/config.toml
+!.setup/
+!.setup/*
