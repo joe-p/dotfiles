@@ -1,7 +1,8 @@
 [user]
 	name = Joe Polny
 	email = joepolny@gmail.com
-	signingkey = /Users/joe/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/PublicKeys/ca2222a87785ab4a440decf032a6398c.pub
+	signingkey = "key::ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEa/Dl6/9KAbKqO2Xt4NkOmCts8f7V3kknVzZSb0V/cfZoOPovb+0to0gMBleRtR+l9S+t+TSm8LKFpevuGY5MY="
+
 [commit]
     gpgsign = true
 [gpg]
