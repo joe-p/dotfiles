@@ -17,22 +17,9 @@ export CLAUDE_CODE_AGENT_RULE_DISABLED=1
 ####################
 # PATH modifications
 ####################
-# If you need to have llvm first in your PATH, run:
-#   echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
-#
-# For compilers to find llvm you may need to set:
-#   export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-#   export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-# export PATH="/opt/homebrew/opt/llvm@15/bin:$PATH"
-
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-export PATH=/opt/homebrew/bin:$PATH
 export PATH="$PATH:$HOME/.local/bin"
 export PATH=$GOPATH/bin:$PATH
-export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
-export PATH="$PATH:/opt/nvim-linux-arm64/bin"
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 ####################
 # Emscripten
@@ -64,16 +51,6 @@ function vim {
 }
 
 ####################
-# brew
-####################
-
-# Add brew auto completions
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-fi
-
-####################
 # Completions
 ####################
 
@@ -81,12 +58,6 @@ eval `dircolors -b`
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
-
-if [[ "$TERM_PROGRAM" == "vscode" ]]; then
-  eval "$($HOME/.local/bin/mise activate zsh --shims)"
-else
-  eval "$($HOME/.local/bin/mise activate zsh)"
-fi
 
 ####################
 # History
