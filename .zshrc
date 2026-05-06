@@ -3,7 +3,6 @@ autoload -Uz compinit && compinit
 ####################
 # variables
 ####################
-export GOPATH="$HOME/go"
 if [ -n "${NVIM}" ]; then
     export VISUAL="nvr --remote-wait"
     export EDITOR="nvr --remote-wait"
@@ -18,14 +17,19 @@ export CLAUDE_CODE_AGENT_RULE_DISABLED=1
 # PATH modifications
 ####################
 export PATH="$PATH:$HOME/.local/bin"
-export PATH=$GOPATH/bin:$PATH
 export PATH="$HOME/.bun/bin:$PATH"
+
+####################
+# mise
+####################
+eval "$(mise activate zsh)"
 
 ####################
 # Emscripten
 ####################
 # export EMSDK_QUIET=1
 # source "/Users/joe/git/other/emsdk/emsdk_env.sh"
+
 
 ####################
 # Aliases
