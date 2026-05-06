@@ -31,7 +31,6 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH=$GOPATH/bin:$PATH
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="$HOME/.bun/bin:$PATH"
-export SSH_AUTH_SOCK=/Users/joe/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 export PATH="$PATH:/opt/nvim-linux-arm64/bin"
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
@@ -119,3 +118,8 @@ prompt pure
 
 source <(fzf --zsh)
 
+# Lima BEGIN
+# Make sure iptables and mount.fuse3 are available
+PATH="$PATH:/usr/sbin:/sbin"
+export PATH
+# Lima END
