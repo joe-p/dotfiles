@@ -1,21 +1,25 @@
 [user]
-	name = Joe Polny
-	email = joepolny@gmail.com
-	signingkey = "key::ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEa/Dl6/9KAbKqO2Xt4NkOmCts8f7V3kknVzZSb0V/cfZoOPovb+0to0gMBleRtR+l9S+t+TSm8LKFpevuGY5MY="
+    name = Joe Polny
+    email = joepolny@gmail.com
+    signingkey = "key::ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEa/Dl6/9KAbKqO2Xt4NkOmCts8f7V3kknVzZSb0V/cfZoOPovb+0to0gMBleRtR+l9S+t+TSm8LKFpevuGY5MY="
 
 [commit]
     gpgsign = true
+
 [gpg]
     format = ssh
+
 [gpg "ssh"]
     allowedSignersFile = ~/.gitallowedsigners
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 
 [core]
-	hooksPath = /Users/joe/.githooks
+    hooksPath = /Users/joe/.githooks
+
+[url "git@github.com:"]
+    pushInsteadOf = https://github.com/
