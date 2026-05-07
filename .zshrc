@@ -10,6 +10,7 @@ else
     export VISUAL="nvim"
     export EDITOR="nvim"
 fi
+
 export BUN_AGENT_RULE_DISABLED=1
 export CLAUDE_CODE_AGENT_RULE_DISABLED=1
 
