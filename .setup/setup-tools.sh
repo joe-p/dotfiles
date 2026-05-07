@@ -18,6 +18,7 @@ fi
 
 # Install mise tools
 mise install
+eval "$($HOME/.local/bin/mise activate zsh)"
 
 # Intall python tools
 uv tool install neovim-remote@2.5.1
