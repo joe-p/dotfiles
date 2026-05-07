@@ -1,15 +1,5 @@
-#/bin/zsh
+#!/bin/zsh
 set -ex
-
-# Setup dotfiles
-if [ ! -d "$HOME/.dotfiles" ]; then
-  echo "Directory does not exist."
-  git clone --bare https://github.com/joe-p/dotfiles.git $HOME/.dotfiles
-  /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout -f
-  /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME submodule update --init
-else
-    echo "dotfiles already cloned... skipping"
-fi
 
 if command -v mise >/dev/null 2>&1; then
     echo "mise already installed... skipping"
