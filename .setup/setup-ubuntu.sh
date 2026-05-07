@@ -39,5 +39,4 @@ sudo usermod -aG docker $USER
 #########################
 # Install tools
 #########################
-zsh ./setup-tools.sh
-
+cd ~/.setup && zsh ./setup-tools.sh
