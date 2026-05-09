@@ -1,10 +1,11 @@
 #!/bin/sh
 
 #########################
-# Install zsh and build-essential
+# Install apt packages
 #########################
 sudo apt-get update
-sudo apt-get install -y zsh build-essential
+sudo apt-get install -y zsh build-essential bubblewrap socat
+
 sudo chsh -s /bin/zsh $USER
 
 #########################
