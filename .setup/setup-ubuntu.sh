@@ -4,8 +4,7 @@
 # Install apt packages
 #########################
 sudo apt-get update
-sudo apt-get install -y zsh build-essential bubblewrap socat
-
+sudo apt-get install -y zsh build-essential bubblewrap socat libc++-dev libc++abi-dev zlib1g-dev libzstd-dev
 sudo chsh -s /bin/zsh $USER
 
 #########################

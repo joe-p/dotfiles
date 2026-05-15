@@ -1,7 +1,7 @@
 [user]
     name = Joe Polny
     email = joepolny@gmail.com
-    signingkey = "key::ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEa/Dl6/9KAbKqO2Xt4NkOmCts8f7V3kknVzZSb0V/cfZoOPovb+0to0gMBleRtR+l9S+t+TSm8LKFpevuGY5MY="
+    signingkey = "key::ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEgp4P00th8UgSxKgG8OgKwEM1q94sEIDQwbmdwg/F0rKjE0S+huKa36+x2HpSFYkJ8+3Kb0va26lpv3ecKGWWk="
 
 [commit]
     gpgsign = true
@@ -23,3 +23,6 @@
 
 [url "git@github.com:"]
     pushInsteadOf = https://github.com/
+
+[alias]
+	dft = !git -c diff.external=difft --no-pager diff
