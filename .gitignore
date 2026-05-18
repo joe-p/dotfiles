@@ -15,3 +15,5 @@ README.md
 !.config/mise/config.toml
 !.setup/
 !.setup/*
+!Dockerfile
+!entrypoint.sh
