@@ -1,4 +1,4 @@
-FROM ubuntu:24.04
+FROM ubuntu:latest
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
 	zsh \
@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 	iproute2 \
 	git-all \
 	openssh-client\
+	gnupg \
     	&& rm -rf /var/lib/apt/lists/*
 
 WORKDIR /home/dev
