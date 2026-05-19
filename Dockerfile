@@ -33,6 +33,10 @@ RUN curl https://mise.run | sh
 
 RUN --mount=type=secret,id=GITHUB_TOKEN,env=GITHUB_TOKEN mise install --verbose
 
+COPY .config/nvim /home/dev/.config/nvim
+RUN .local/share/mise/installs/neovim/latest/bin/nvim --headless -c 'packloadall | quit' && \
+    rm -rf .config/nvim
+
 ENV MISE_CONFIG_DIR="/home/dev/.config/mise"
 ENV MISE_CACHE_DIR="/home/dev/.cache/mise"
 ENV MISE_DATA_DIR="/home/dev/.local/share/mise"
