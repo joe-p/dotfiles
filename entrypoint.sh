@@ -22,4 +22,12 @@ fi
 git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME pull
 mise install --dry-run
 
+if [ -z "$REPO_URL" ]; then
+    echo "WARN: REPO_URL environment variable is not defined."
+elif [ -d "/home/dev/git/$REPO_NAME" ]; then
+    echo "INFO: Directory /home/dev/git/$REPO_NAME already exists. Skipping clone of $REPO_URL"
+else
+    mkdir /home/dev/git && git clone "$REPO_URL" /home/dev/git/"$REPO_NAME"
+fi
+
 exec "$@"

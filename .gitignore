@@ -26,3 +26,4 @@ README.md
 !entrypoint.sh
 !mise-lock.sh
 !docker-build.sh
+!run_dev_container.sh
