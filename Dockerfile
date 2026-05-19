@@ -27,11 +27,14 @@ ENV MISE_DATA_DIR="/home/dev/.local/share/mise"
 
 COPY .config/mise/ /home/dev/.config/mise/
 
-# ENV MISE_VERSION="..."
 ENV MISE_INSTALL_PATH="/usr/local/bin/mise"
-RUN curl https://mise.run | sh
+COPY setup-mise.sh setup-mise.sh
+RUN bash setup-mise.sh && rm setup-mise.sh
 
-RUN --mount=type=secret,id=GITHUB_TOKEN,env=GITHUB_TOKEN mise install --verbose
+COPY .config/mise/mise.lock /home/dev/.config/mise/mise.lock
+RUN --mount=type=secret,id=GITHUB_TOKEN,env=GITHUB_TOKEN \
+    mise install --verbose && \
+    rm -rf /home/dev/.cache
 
 COPY .config/nvim /home/dev/.config/nvim
 RUN .local/share/mise/installs/neovim/latest/bin/nvim --headless -c 'packloadall | quit' && \
