@@ -33,13 +33,6 @@ RUN curl https://mise.run | sh
 
 RUN --mount=type=secret,id=GITHUB_TOKEN,env=GITHUB_TOKEN mise install --verbose
 
-COPY .zshrc .zshrc
-COPY .zsh/ .zsh/
-COPY .pi/ .pi/
-COPY .config/lazygit/ .config/lazygit/
-COPY .config/nvim/ .config/nvim/
-COPY .gitconfig .gitconfig
-
 ENV MISE_CONFIG_DIR="/home/dev/.config/mise"
 ENV MISE_CACHE_DIR="/home/dev/.cache/mise"
 ENV MISE_DATA_DIR="/home/dev/.local/share/mise"
