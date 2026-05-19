@@ -1,8 +1,8 @@
+-- Pull in the wezterm API
 local wezterm = require("wezterm")
-local config = wezterm.config_builder()
 
-local LIMA_VM = "dev"
-local LIMACTL = "/opt/homebrew/bin/limactl"
+-- Build the initial config
+local config = wezterm.config_builder()
 
 local function get_appearance()
 	if wezterm.gui then
@@ -13,108 +13,85 @@ end
 
 local function scheme_for_appearance()
 	if get_appearance():find("Dark") then
-		return "Catppuccin Macchiato"
+		return "Catppuccin Macchiato" -- or Macchiato, Frappe, Latte
 	else
 		return "Catppuccin Latte"
 	end
 end
 
+local function read_git_repos(path)
+	local result = {}
+	local file = io.open(path, "r")
+	if not file then
+		return result
+	end
+
+	for line in file:lines() do
+		-- Match two whitespace-separated tokens
+		local repo_name, repo_url = line:match("^(%S+)%s+(%S+)")
+		if repo_name and repo_url then
+			table.insert(result, { label = repo_url, id = repo_name })
+		end
+	end
+
+	file:close()
+	return result
+end
+
+-- Change font and color scheme
 config.font = wezterm.font("MesloLGM Nerd Font Mono")
 config.color_scheme = scheme_for_appearance()
 config.font_size = 14
 
+-- wezterm.action is used often, so save it as a local variable
 local act = wezterm.action
 
+-- The status in the top right should always be the active worksapce
 wezterm.on("update-right-status", function(window, pane)
 	window:set_right_status(window:active_workspace())
 end)
 
+-- Function for fuzzy picking a git repo as a workspace
+-- based on https://github.com/wez/wezterm/discussions/4796
 local function select_workspace(window, pane)
-	-- Resolve $HOME inside the VM
-	local ok, vm_home, err = wezterm.run_child_process({
-		LIMACTL,
-		"shell",
-		LIMA_VM,
-		"sh",
-		"-c",
-		"echo $HOME",
-	})
-	if not ok then
-		wezterm.log_error("Failed to resolve VM home: " .. (err or ""))
-		return
-	end
-	vm_home = vm_home:gsub("%s+$", "")
-
-	-- Pinned projects (paths inside the VM)
-	local projects = {
-		{ label = vm_home .. "/.config/nvim", id = "nvim" },
-		{ label = vm_home .. "/.pi/agent", id = "pi-agent-config" },
-	}
-
-	local success, stdout, stderr = wezterm.run_child_process({
-		LIMACTL,
-		"shell",
-		LIMA_VM,
-		vm_home .. "/.local/share/mise/shims/fd",
-		"--hidden",
-		"--no-ignore",
-		"^.git$",
-		"--max-depth=3",
-		"--prune",
-		vm_home .. "/git",
-	})
-
-	if not success then
-		wezterm.log_error("Failed to run fd in lima: " .. stderr)
-		return
-	end
-
-	for line in stdout:gmatch("([^\n]*)\n?") do
-		if line ~= "" then
-			local project = line:gsub("/.git.*$", "")
-			local id = project:gsub(".*/", "")
-			table.insert(projects, { label = project, id = id })
-		end
-	end
+	local projects = read_git_repos("/Users/joe/.gitrepos")
 
 	window:perform_action(
 		act.InputSelector({
 			action = wezterm.action_callback(function(win, _, id, label)
 				if not id and not label then
 					wezterm.log_info("Cancelled")
-					return
-				end
-				wezterm.log_info("Selected " .. label)
-				local tab_title = label:match("^.*/(.*)$") or label
+				else
+					wezterm.log_info("Selected " .. label)
 
-				-- If a tab with this title already exists, jump to it
-				local tabs = win:mux_window():tabs()
-				for i = 1, #tabs do
-					if tabs[i]:get_title() == tab_title then
-						tabs[i]:activate()
-						return
+					local tab_title = label:match("^.*/(.*)$")
+					local tabs = win:mux_window():tabs()
+					for i = 1, #tabs do
+						if tabs[i]:get_title() == tab_title then
+							tabs[i]:activate()
+							return
+						end
 					end
-				end
 
-				-- Spawn nvim inside the VM via login zsh, with cwd set to the project dir
-				win:perform_action(
-					act.SpawnCommandInNewTab({
-						args = {
-							LIMACTL,
-							"shell",
-							"--workdir",
-							label,
-							LIMA_VM,
-							"zsh",
-							"-l",
-							"-i",
-							"-c",
-							"nvim",
-						},
-					}),
-					pane
-				)
-				win:active_tab():set_title(tab_title)
+					wezterm.log_info("Running command...")
+					win:perform_action(
+						act.SpawnCommandInNewTab({
+							args = {
+								"/bin/zsh",
+								"-i",
+								"-c",
+								string.format(
+									"%s/git/joe-p/apple-dev-container/run_dev_container.sh %q %q",
+									wezterm.home_dir,
+									id,
+									label
+								),
+							},
+						}),
+						pane
+					)
+					win:active_tab():set_title(tab_title)
+				end
 			end),
 			fuzzy = true,
 			title = "Select project",
@@ -125,9 +102,21 @@ local function select_workspace(window, pane)
 end
 
 config.keys = {
-	{ key = "P", mods = "SUPER", action = act.ActivateCommandPalette },
-	{ key = "d", mods = "SUPER", action = act.SwitchToWorkspace({ name = "default" }) },
-	{ key = "k", mods = "SUPER", action = wezterm.action_callback(select_workspace) },
+	{
+		key = "P",
+		mods = "SUPER",
+		action = act.ActivateCommandPalette,
+	},
+	{
+		key = "d",
+		mods = "SUPER",
+		action = act.SwitchToWorkspace({ name = "default" }),
+	},
+	{
+		key = "k",
+		mods = "SUPER",
+		action = wezterm.action_callback(select_workspace),
+	},
 }
 
 return config
