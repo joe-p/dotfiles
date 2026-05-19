@@ -89,6 +89,7 @@ bindkey '^[[B' history-search-forward
 ####################
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
+PURE_GIT_PULL=0
 zstyle :prompt:pure:git:stash show yes
 prompt pure
 
