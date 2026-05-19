@@ -1,4 +1,5 @@
 [tools]
+cargo-binstall = "latest"
 node = "24"
 python = "latest"
 fzf = "latest"
