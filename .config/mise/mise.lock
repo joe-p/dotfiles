@@ -1309,43 +1309,43 @@ checksum = "sha256:bd14f5aca2263a10fc793aa6a576b72aa409b737b421284a8ec75e29f328e
 url = "https://github.com/anomalyco/opencode/releases/download/v1.15.4/opencode-windows-x64.zip"
 
 [[tools.pi]]
-version = "0.73.0"
+version = "0.74.0"
 backend = "github:badlogic/pi-mono"
 
 [tools.pi."platforms.linux-arm64"]
-checksum = "sha256:66d07237cc68e25f531f0afa8749552dda03e2beaf47a490bd9101874603b87b"
-url = "https://github.com/earendil-works/pi/releases/download/v0.73.0/pi-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/412042241"
+checksum = "sha256:261aa912878ca983c903d9c4a0408310dd8637b583085651d9b5ddb70c9df572"
+url = "https://github.com/earendil-works/pi/releases/download/v0.74.0/pi-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/414593863"
 
 [tools.pi."platforms.linux-arm64-musl"]
-checksum = "sha256:66d07237cc68e25f531f0afa8749552dda03e2beaf47a490bd9101874603b87b"
-url = "https://github.com/earendil-works/pi/releases/download/v0.73.0/pi-linux-arm64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/412042241"
+checksum = "sha256:261aa912878ca983c903d9c4a0408310dd8637b583085651d9b5ddb70c9df572"
+url = "https://github.com/earendil-works/pi/releases/download/v0.74.0/pi-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/414593863"
 
 [tools.pi."platforms.linux-x64"]
-checksum = "sha256:5ee97ac6aa5ed7258decc416afdebbefbd5bf9e2cd5c814197bd4bf1e4f25f9f"
-url = "https://github.com/earendil-works/pi/releases/download/v0.73.0/pi-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/412042236"
+checksum = "sha256:d67657a30d49c9faca80868d2a4bdba4dfcac04702893f45a6d14b249345eb8d"
+url = "https://github.com/earendil-works/pi/releases/download/v0.74.0/pi-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/414593861"
 
 [tools.pi."platforms.linux-x64-musl"]
-checksum = "sha256:5ee97ac6aa5ed7258decc416afdebbefbd5bf9e2cd5c814197bd4bf1e4f25f9f"
-url = "https://github.com/earendil-works/pi/releases/download/v0.73.0/pi-linux-x64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/412042236"
+checksum = "sha256:d67657a30d49c9faca80868d2a4bdba4dfcac04702893f45a6d14b249345eb8d"
+url = "https://github.com/earendil-works/pi/releases/download/v0.74.0/pi-linux-x64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/414593861"
 
 [tools.pi."platforms.macos-arm64"]
-checksum = "sha256:1b0cc3f93dcebf56bae6d3484c0571184ee53254fc41da51b160ae77780d2d30"
-url = "https://github.com/earendil-works/pi/releases/download/v0.73.0/pi-darwin-arm64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/412042239"
+checksum = "sha256:3063179823c6a985634312240c57015024316f7fe6661edd41f14c77d8b15e10"
+url = "https://github.com/earendil-works/pi/releases/download/v0.74.0/pi-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/414593862"
 
 [tools.pi."platforms.macos-x64"]
-checksum = "sha256:b09aa67b8b8d8c50899e307bc9413ed7d21474fee72e60cf9f7fa5765599fb7f"
-url = "https://github.com/earendil-works/pi/releases/download/v0.73.0/pi-darwin-x64.tar.gz"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/412042240"
+checksum = "sha256:fa65c98f2c651ec2f89fb1a8a3dc9b987947bc9b102361a2f178862abacc7560"
+url = "https://github.com/earendil-works/pi/releases/download/v0.74.0/pi-darwin-x64.tar.gz"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/414593859"
 
 [tools.pi."platforms.windows-x64"]
-checksum = "sha256:3581a94d72c28ea908ea51d37c31f10c25ed53920d7b6390333a5bfa5061d5db"
-url = "https://github.com/earendil-works/pi/releases/download/v0.73.0/pi-windows-x64.zip"
-url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/412042237"
+checksum = "sha256:0cbfb81e31b0fea0a4f88f95d05f3a32a782a686d54771ede30042ae42e9931f"
+url = "https://github.com/earendil-works/pi/releases/download/v0.74.0/pi-windows-x64.zip"
+url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/414593860"
 
 [[tools."pipx:algokit"]]
 version = "2.10.2"
