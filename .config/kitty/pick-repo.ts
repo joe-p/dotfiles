@@ -12,9 +12,6 @@ const config = TOML.parse(
   readFileSync(`${homedir()}/.gitrepos.toml`, "utf8"),
 ) as { repo: Repo[] };
 
-const repos = config.repo;
-
-const input = repos.map((r) => `${r.url}\t${r.name}`).join("\n");
 const proc = Bun.spawn(
   [
     "fzf",
@@ -25,15 +22,20 @@ const proc = Bun.spawn(
   ],
   { stdin: "pipe", stdout: "pipe" },
 );
+
+const input = config.repo.map((r) => `${r.url}\t${r.name}`).join("\n");
 proc.stdin.write(input);
 await proc.stdin.end();
+
 const selection = (await new Response(proc.stdout).text()).trim();
 if (!selection) process.exit(0);
+
 const [url, name] = selection.split("\t");
 const title = basename(name!);
-// Check existing tabs
+
 const windows: KittyWindow[] = await $`kitty @ ls`.json();
 const exists = windows.some((w) => w.tabs.some((t) => t.title === title));
+
 if (exists) {
   await $`kitty @ focus-tab --match ${"title:^" + title + "$"}`;
 } else {
