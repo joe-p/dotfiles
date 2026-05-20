@@ -87,6 +87,10 @@ bindkey '^[[B' history-search-forward
 ####################
 # Pure
 ####################
+# Make sure we are using UTF-8 so pure's prompt multi-byte glyph renders correctly
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 PURE_GIT_PULL=0
