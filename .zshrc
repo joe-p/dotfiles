@@ -40,6 +40,7 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias lzg='lazygit'
 alias lzd='lazydocker'
 alias pn='pnpm'
+alias lzdot='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 ####################
 # Functions
@@ -95,12 +96,12 @@ fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 PURE_GIT_PULL=0
 zstyle :prompt:pure:git:stash show yes
+
+prompt_pure_precustom() {
+	psvar[22]=dev@$REPO_NAME
+}
+
 prompt pure
 
 source <(fzf --zsh)
 
-# Lima BEGIN
-# Make sure iptables and mount.fuse3 are available
-PATH="$PATH:/usr/sbin:/sbin"
-export PATH
-# Lima END
