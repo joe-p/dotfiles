@@ -31,7 +31,7 @@ const selection = (await new Response(proc.stdout).text()).trim();
 if (!selection) process.exit(0);
 
 const [url, name] = selection.split("\t");
-const title = basename(name!);
+const title = `💻 ${basename(name!).trim()}`;
 
 const windows: KittyWindow[] = await $`kitty @ ls`.json();
 const exists = windows.some((w) => w.tabs.some((t) => t.title === title));
@@ -40,5 +40,5 @@ if (exists) {
   await $`kitty @ focus-tab --match ${"title:^" + title + "$"}`;
 } else {
   const script = `${homedir()}/git/joe-p/apple-dev-container/run_dev_container.sh`;
-  await $`kitty @ launch --type=tab --tab-title=${title} /bin/zsh -i -c ${`${script} '${name}' '${url}'`}`;
+  await $`kitty @ launch --type=tab --tab-title="${title}" /bin/zsh -i -c ${`${script} '${name}' '${url}'`}`;
 }
