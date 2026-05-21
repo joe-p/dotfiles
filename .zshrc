@@ -49,6 +49,8 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias lzg='lazygit'
 alias lzd='lazydocker'
 alias pn='pnpm'
+alias lzdot='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
 
 ####################
 # Functions
