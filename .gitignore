@@ -27,3 +27,6 @@ README.md
 !mise-lock.sh
 !docker-build.sh
 !run_dev_container.sh
+
+!.config/opencode/
+!.config/opencode/*
