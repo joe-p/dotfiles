@@ -1,0 +1,12 @@
+{
+  "network": {
+    "allowedDomains": [
+      "github.com",
+      "dev.algorand.co",
+      "raw.githubusercontent.com",
+      "patch-diff.githubusercontent.com",
+      "api.github.com"
+    ],
+    "deniedDomains": []
+  }
+}

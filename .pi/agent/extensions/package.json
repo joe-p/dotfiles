@@ -1,0 +1,35 @@
+{
+  "name": "@joe-p/pi-agent-extensions",
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "license": "ISC",
+  "packageManager": "pnpm@10.22.0",
+  "dependencies": {
+    "@joe-p/sandbox-runtime": "0.0.3",
+    "@mariozechner/pi-agent-core": "^0.69.0",
+    "@mariozechner/pi-ai": "^0.69.0",
+    "@mariozechner/pi-coding-agent": "^0.69.0",
+    "@mariozechner/pi-tui": "^0.69.0",
+    "@mozilla/readability": "^0.6.0",
+    "@napi-rs/keyring": "^1.2.0",
+    "diff": "^9.0.0",
+    "jsdom": "^29.0.2",
+    "minimatch": "^10.2.5",
+    "shell-quote": "^1.8.3",
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2",
+    "typebox": "^1.1.33"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^28.0.1",
+    "@types/node": "^20.19.39",
+    "@types/shell-quote": "^1.7.5",
+    "@types/turndown": "^5.0.6",
+    "prettier": "^3.8.3",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.4"
+  }
+}

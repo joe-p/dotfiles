@@ -1,0 +1,7 @@
+{
+  "providers": {
+    "openrouter": {
+      "baseUrl": "http://localhost:7777/openrouter/pi/api/v1"
+    }
+  }
+}

@@ -1,0 +1,170 @@
+import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import {
+  emptyRuntimeConfig,
+  NetworkAndFsConfig,
+  ScopedSandbox,
+} from "./lib/scoped-sandbox";
+import { PiSandbox } from "./lib/pi-sandbox";
+import path from "node:path";
+import { homedir } from "node:os";
+import { IN_CONTAINER } from "./lib/in-container";
+
+if (path.resolve(process.cwd()) === path.resolve(homedir())) {
+  throw Error("Running pi in your home directory is dangerous!");
+}
+
+/** Rules that are ALWAYS enforced */
+const MANDATORY_CONFIG: NetworkAndFsConfig = {
+  network: {
+    allowedDomains: [],
+    deniedDomains: [],
+  },
+  filesystem: {
+    // Ideally we'd be more restrictive and deny access to things that may contain secret material
+    // like .env and .pem files. Unfortunately, this makes it really hard to use tools because they
+    // often implicitly read these things (for example, Python reads .pem certs from the .venv for TLS)
+    // Because we are allowing read on potentially secret data, being strict about network access becomes even more important
+    //
+    // The gitleaks extension also adds an extra layer of protection to prevent secret leaking
+    denyRead: [],
+    allowWrite: [],
+    skipMandatoryDenyPatterns: true,
+    denyWrite: ["**/.git", "**/.env", "**/.gitmodules"],
+  },
+};
+
+const sandboxes = {
+  build: new ScopedSandbox(
+    {
+      alwayDenyWithMessage: false,
+      runtimeConfig: {
+        ...emptyRuntimeConfig(),
+        filesystem: {
+          allowRead: ["."],
+          denyRead: [],
+          allowWrite: ["."],
+          denyWrite: [],
+        },
+      },
+    },
+    MANDATORY_CONFIG,
+  ),
+  plan: new ScopedSandbox(
+    {
+      alwayDenyWithMessage: false,
+      runtimeConfig: {
+        ...emptyRuntimeConfig(),
+        filesystem: {
+          allowRead: ["."],
+          denyRead: [],
+          allowWrite: [],
+          denyWrite: [],
+        },
+      },
+    },
+    MANDATORY_CONFIG,
+  ),
+};
+
+export const sandbox = new PiSandbox(sandboxes);
+
+const jsPackageManagers = ["npm", "deno", "bun", "pnpm"];
+const jsInstallSubCommands = ["i", "add", "install"];
+
+jsPackageManagers.forEach((pm) => {
+  // In both plan mode and build mode allow pnpm to read files and access the registry
+  // The network access is primarily useful for letting the agent run audit commands in plan mode
+  sandbox.addConfig("both", pm, {
+    alwayDenyWithMessage: false,
+    runtimeConfig: {
+      filesystem: {
+        allowWrite: ["node_modules/.vite-temp"],
+        denyRead: [],
+        denyWrite: [],
+      },
+      network: {
+        allowedDomains: ["npmjs.org", "registry.npmjs.org", "npm.jsr.io"],
+        deniedDomains: [],
+      },
+    },
+  });
+
+  // In build mode, allow writing and network access to the registry
+  jsInstallSubCommands.forEach((c) => {
+    sandbox.addConfig("build", `${pm} ${c}`, {
+      alwayDenyWithMessage: false,
+      approvalAssertion: async (_, parentCommand) => {
+        await sandbox.assertApproval(parentCommand);
+      },
+      runtimeConfig: {
+        filesystem: {
+          // TODO: further restrict to only allow read/writes on package.json, node_modules, and lock file.
+          // This will require logic to find the package.json and/or node_modules
+          allowWrite: ["."],
+
+          denyRead: [],
+          denyWrite: [],
+        },
+        network: {
+          allowedDomains: ["npmjs.org", "registry.npmjs.org", "npm.jsr.io"],
+          deniedDomains: [],
+        },
+      },
+    });
+  });
+});
+
+const allowedGitCmds = ["diff", "grep", "log", "show", "status", "rev-parse"];
+
+sandbox.addConfig("both", "git", {
+  runtimeConfig: emptyRuntimeConfig(),
+  alwayDenyWithMessage: `This git command is not allowed. The allowed commands are ${allowedGitCmds}. As an agent, you should only use read-only git commands. If you think this is a mistake, inform the user and ask them to allow the sub-command you are trying to use`,
+});
+
+allowedGitCmds.forEach((c) => {
+  sandbox.addConfig("both", `git ${c}`, {
+    alwayDenyWithMessage: false,
+    runtimeConfig: emptyRuntimeConfig(),
+  });
+});
+
+sandbox.addConfig("both", "uv", {
+  alwayDenyWithMessage: false,
+  runtimeConfig: {
+    network: {
+      allowLocalBinding: true,
+      allowedDomains: ["pypi.org"],
+      deniedDomains: [],
+    },
+    filesystem: {
+      allowWrite: ["~/.cache/uv", "**/.pytest_cache"],
+      denyRead: [],
+      denyWrite: [],
+    },
+  },
+});
+
+sandbox.addConfig("both", "go", {
+  alwayDenyWithMessage: false,
+  runtimeConfig: {
+    network: {
+      allowLocalBinding: true,
+      allowedDomains: ["github.com"],
+      deniedDomains: [],
+    },
+    filesystem: {
+      allowWrite: [
+        "~/.cache/go-build/",
+        "~/.cache/goimports/",
+        "~/.cache/gopls/",
+        "~/go",
+      ],
+      denyRead: [],
+      denyWrite: [],
+    },
+  },
+});
+
+export default function (pi: ExtensionAPI) {
+  if (!IN_CONTAINER) sandbox.setupExtension(pi);
+}
