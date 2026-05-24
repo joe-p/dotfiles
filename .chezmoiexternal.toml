@@ -1,0 +1,5 @@
+[".zsh/pure"]
+    type = "archive"
+    url = "https://github.com/sindresorhus/pure/archive/refs/tags/v1.28.1.tar.gz"
+    exact = true
+    stripComponents = 1
