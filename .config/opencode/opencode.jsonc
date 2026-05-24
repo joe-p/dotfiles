@@ -4,6 +4,7 @@
   "provider": {
     "openrouter": {
       "options": {
+        "apiKey": "SECRET",
         "baseURL": "http://localhost:7777/openrouter/opencode/api/v1"
       },
       "models": {
