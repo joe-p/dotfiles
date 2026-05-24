@@ -1,6 +1,0 @@
-[submodule ".config/nvim"]
-	path = .config/nvim
-	url = https://github.com/joe-p/kickstart.nvim.git
-[submodule ".pi"]
-	path = .pi/agent
-	url = https://github.com/joe-p/pi-agent-config
