@@ -1,0 +1,4 @@
+modelRoles: 
+  default: openrouter/moonshotai/kimi-k2.5
+theme:
+  dark:  catppuccin-macchiato

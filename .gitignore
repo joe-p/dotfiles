@@ -30,3 +30,9 @@ README.md
 
 !.config/opencode/
 !.config/opencode/*
+
+!.omp/
+!.omp/*
+!.omp/agent/
+!.omp/agent/*
+.omp/agent/*.db*

@@ -1,0 +1,4 @@
+providers:
+  openrouter:
+    baseUrl: http://localhost:7777/openrouter/omp/api/v1
+    apiKey: SECRET

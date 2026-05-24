@@ -956,6 +956,45 @@ url = "https://github.com/junegunn/fzf/releases/download/v0.72.0/fzf-0.72.0-darw
 checksum = "sha256:cce66ae7e442030334927bfbfd917690713e63d215aba93027f99807828fe239"
 url = "https://github.com/junegunn/fzf/releases/download/v0.72.0/fzf-0.72.0-windows_amd64.zip"
 
+[[tools."github:can1357/oh-my-pi"]]
+version = "15.1.3"
+backend = "github:can1357/oh-my-pi"
+
+[tools."github:can1357/oh-my-pi"."platforms.linux-arm64"]
+checksum = "sha256:e6fb970c33524af9760baa99aae0ccdaa47fecda7c25f7ba6fd98625ef0166fd"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v15.1.3/omp-linux-arm64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/422254527"
+
+[tools."github:can1357/oh-my-pi"."platforms.linux-arm64-musl"]
+checksum = "sha256:e6fb970c33524af9760baa99aae0ccdaa47fecda7c25f7ba6fd98625ef0166fd"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v15.1.3/omp-linux-arm64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/422254527"
+
+[tools."github:can1357/oh-my-pi"."platforms.linux-x64"]
+checksum = "sha256:c9043f9074ff6eaba5369eaa2352abf39212fb3f8a94b91258e8d904911be696"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v15.1.3/omp-linux-x64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/422254530"
+
+[tools."github:can1357/oh-my-pi"."platforms.linux-x64-musl"]
+checksum = "sha256:c9043f9074ff6eaba5369eaa2352abf39212fb3f8a94b91258e8d904911be696"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v15.1.3/omp-linux-x64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/422254530"
+
+[tools."github:can1357/oh-my-pi"."platforms.macos-arm64"]
+checksum = "sha256:8fce46d85d6e2829feb3ffebe97af15c927e1b2e76c71897c8acad614b8b3247"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v15.1.3/omp-darwin-arm64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/422254529"
+
+[tools."github:can1357/oh-my-pi"."platforms.macos-x64"]
+checksum = "sha256:db777441727713c3f7628e11331e2737e0f299ecd67e67a7b485ba591f02e5ee"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v15.1.3/omp-darwin-x64"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/422254531"
+
+[tools."github:can1357/oh-my-pi"."platforms.windows-x64"]
+checksum = "sha256:4292bf72e9edae8f7604a23fa41b41b28ba00f6168fcdc0bc45b2cd6681fe5cc"
+url = "https://github.com/can1357/oh-my-pi/releases/download/v15.1.3/omp-windows-x64.exe"
+url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/422254528"
+
 [[tools.gitleaks]]
 version = "8.30.1"
 backend = "aqua:gitleaks/gitleaks"
