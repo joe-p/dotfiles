@@ -56,6 +56,13 @@ function vim {
     fi
 }
 
+function cme {
+    cwd=$(pwd)
+    cd ~/.local/share/chezmoi && nvim && chezmoi apply
+    source ~/.zshrc
+    cd $cwd 
+}
+
 ####################
 # Completions
 ####################
