@@ -34,7 +34,8 @@ local og_open = vim.ui.open
 
 ---@diagnostic disable-next-line: duplicate-set-field
 vim.ui.open = function(uri)
-  vim.notify(uri)
+  local osc52_copy = require('vim.ui.clipboard.osc52').copy '+'
+  osc52_copy { uri }
   og_open(uri)
   return { code = 0 }, nil
 end
