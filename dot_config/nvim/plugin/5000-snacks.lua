@@ -1,6 +1,6 @@
-vim.pack.add({ 'https://github.com/folke/snacks.nvim' })
+vim.pack.add { 'https://github.com/folke/snacks.nvim' }
 
-require('snacks').setup({
+require('snacks').setup {
   bigfile = { enabled = false },
   indent = { enabled = true },
   input = { enabled = true },
@@ -36,7 +36,7 @@ require('snacks').setup({
       },
     },
   },
-})
+}
 
 -- Keymaps
 vim.keymap.set('n', '<leader>wt', function()
@@ -52,7 +52,7 @@ vim.keymap.set('n', '<leader>dr', function()
 end, { desc = '[d]ocument [r]ename' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>gB', function()
-  Snacks.gitbrowse({ what = 'permalink' })
+  Snacks.gitbrowse { what = 'permalink' }
 end, { desc = 'Git Browse' })
 
 vim.keymap.set('n', '<leader>gb', function()
@@ -82,7 +82,7 @@ vim.keymap.set('n', '<leader>fb', function()
 end, { desc = '[F]ind [B]uffers' })
 
 vim.keymap.set('n', '<leader>ff', function()
-  Snacks.picker.files({ hidden = true })
+  Snacks.picker.files { hidden = true }
 end, { desc = '[F]ind [F]iles' })
 
 -- Git
@@ -96,7 +96,7 @@ end, { desc = 'Search [G]it [S]tatus' })
 
 -- Grep
 vim.keymap.set('n', '<leader>sb', function()
-  Snacks.picker.lines({ fullscreen = false })
+  Snacks.picker.lines { fullscreen = false }
 end, { desc = '[S]earch [B]uffer Lines' })
 
 vim.keymap.set('n', '<leader>sB', function()
@@ -161,7 +161,7 @@ vim.keymap.set('n', '<leader>sp', function()
 end, { desc = '[S]earch [P]rojects' })
 
 vim.keymap.set('n', '<leader>ss', function()
-  Snacks.picker.lsp_symbols({
+  Snacks.picker.lsp_symbols {
     filter = {
       default = {
         'Class',
@@ -177,7 +177,7 @@ vim.keymap.set('n', '<leader>ss', function()
         'Trait',
       },
     },
-  })
+  }
 end, { desc = '[S]earch LSP [S]ymbols' })
 
 -- LSP
@@ -197,10 +197,6 @@ vim.keymap.set('n', 'gy', function()
   Snacks.picker.lsp_type_definitions()
 end, { desc = '[G]oto T[y]pe Definition' })
 
-vim.keymap.set('n', '<leader>ws', function()
-  Snacks.terminal.open('search-tui')
-end, { desc = '[S]earch/Replace In Workspace' })
-
 vim.keymap.set('n', '<leader>bd', function()
   Snacks.bufdelete()
 end, { desc = 'Buffer [C]lose (no save)' })
@@ -216,10 +212,10 @@ end
 vim.print = _G.dd -- Override print to use snacks for `:=` command
 
 -- Create some toggle mappings
-Snacks.toggle.option('spell', { name = 'Spelling' }):map('<leader>Ts')
-Snacks.toggle.option('wrap', { name = 'Wrap' }):map('<leader>Tw')
-Snacks.toggle.diagnostics():map('<leader>Td')
-Snacks.toggle.option('conceallevel', { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map('<leader>Tc')
-Snacks.toggle.treesitter():map('<leader>Tt')
-Snacks.toggle.indent():map('<leader>Ti')
-Snacks.toggle.dim():map('<leader>TD')
+Snacks.toggle.option('spell', { name = 'Spelling' }):map '<leader>Ts'
+Snacks.toggle.option('wrap', { name = 'Wrap' }):map '<leader>Tw'
+Snacks.toggle.diagnostics():map '<leader>Td'
+Snacks.toggle.option('conceallevel', { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map '<leader>Tc'
+Snacks.toggle.treesitter():map '<leader>Tt'
+Snacks.toggle.indent():map '<leader>Ti'
+Snacks.toggle.dim():map '<leader>TD'
