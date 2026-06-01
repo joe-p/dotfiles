@@ -11,7 +11,9 @@
         "moonshotai/kimi-k2.5": {
           "options": {
             "provider": {
-              "zdr": true
+              "zdr": true,
+              "allow_fallbacks": false,
+              "data_collection": "deny"
             }
           }
         }
