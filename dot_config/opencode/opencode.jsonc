@@ -11,8 +11,7 @@
         "moonshotai/kimi-k2.5": {
           "options": {
             "provider": {
-              "order": ["modelrun/fp4", "fireworks"],
-              "allow_fallbacks": false
+              "zdr": true
             }
           }
         }
