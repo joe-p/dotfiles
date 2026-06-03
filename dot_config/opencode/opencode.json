@@ -1,0 +1,43 @@
+{
+  "model": "openrouter/deepseek/deepseek-v4-flash",
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "openrouter": {
+      "options": {
+        "apiKey": "SECRET",
+        "baseURL": "http://localhost:7777/openrouter/opencode/api/v1"
+      },
+      "models": {
+        "deepseek/deepseek-v4-flash": {
+          "name": "DeepSeek V4 Pro (xhigh)",
+          "provider": {
+            "npm": "@ai-sdk/openai-compatible"
+          },
+          "interleaved": {
+            "field": "reasoning_content"
+          },
+          "options": {
+            "reasoning_effort": "xhigh",
+            "thinking": {
+              "type": "enabled"
+            },
+            "provider": {
+              "zdr": true,
+              "allow_fallbacks": false,
+              "data_collection": "deny"
+            }
+          }
+        },
+        "moonshotai/kimi-k2.5": {
+          "options": {
+            "provider": {
+              "zdr": true,
+              "allow_fallbacks": false,
+              "data_collection": "deny"
+            }
+          }
+        }
+      }
+    }
+  }
+}
