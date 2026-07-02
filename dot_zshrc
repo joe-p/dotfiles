@@ -104,10 +104,6 @@ autoload -U promptinit; promptinit
 PURE_GIT_PULL=0
 zstyle :prompt:pure:git:stash show yes
 
-prompt_pure_precustom() {
-	psvar[22]=dev@$REPO_NAME
-}
-
 prompt pure
 
 source <(fzf --zsh)
