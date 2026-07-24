@@ -14,15 +14,15 @@
       "version": "1.0.0 - 2.0.0"
     },
     "catppuccin": {
-      "rev": "e068ab5f8261f23f6f71ffd8791ae40315b77b9c",
+      "rev": "c7c692a0ad3080710893abbae100171819a3e4be",
       "src": "https://github.com/catppuccin/nvim"
     },
     "codediff.nvim": {
-      "rev": "7608f3b436ce1f84a4888f75e53079caa981a2e9",
+      "rev": "2253030fc17c8356a2ff1026f25cb9b570bdd91f",
       "src": "https://github.com/esmuellert/codediff.nvim"
     },
     "codesnap.nvim": {
-      "rev": "8e1d1339f6d5ca994841698a6dde3608dd5e2ad1",
+      "rev": "21b7561c95cc452c65ddf2fc4dfeb280f8471d45",
       "src": "https://github.com/mistricky/codesnap.nvim"
     },
     "conform.nvim": {
@@ -30,7 +30,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "cursortab.nvim": {
-      "rev": "bee28b566c15f4b46a3b4a9878762986d1f630bb",
+      "rev": "8b50d427d76fd995a08ee7eb9eed9f8b72626693",
       "src": "https://github.com/cursortab/cursortab.nvim"
     },
     "dart.nvim": {
@@ -51,11 +51,11 @@
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "flash.nvim": {
-      "rev": "fcea7ff883235d9024dc41e638f164a450c14ca2",
+      "rev": "b6346946d10d07998efee029fb0f7a593806d0cd",
       "src": "https://github.com/folke/flash.nvim"
     },
     "gitsigns.nvim": {
-      "rev": "2038c666bd9d8a0b7349a0b6ee00dc83104b9ecf",
+      "rev": "31d6fb2d618bca1482b9f274751ead5f03461408",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "goose.nvim": {
@@ -80,7 +80,7 @@
       "src": "https://github.com/kdheepak/lazygit.nvim"
     },
     "live-preview.nvim": {
-      "rev": "5977060965161f7b3be3166467d03e09d10c68ea",
+      "rev": "a30e54e51e7480d7060c8c8185f2a963ad3518b4",
       "src": "https://github.com/brianhuster/live-preview.nvim"
     },
     "llama.vim": {
@@ -88,7 +88,7 @@
       "src": "https://github.com/ggml-org/llama.vim"
     },
     "markview.nvim": {
-      "rev": "301e431c7b618235f5447d54465c70934bd33668",
+      "rev": "2471f4097f8561a6880a0fe05ee0f21cbc82b374",
       "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mini.statusline": {
@@ -105,16 +105,16 @@
       "src": "https://github.com/mfussenegger/nvim-lint"
     },
     "nvim-lspconfig": {
-      "rev": "3371bf298c1f56efc26771ee961f461176958fb5",
+      "rev": "d592c1e6ad9a0a01b3d5ed3f0345d68407167181",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
+      "rev": "a03c6283b079df3ec55705d4702d515ab2072267",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
     "opencode.nvim": {
-      "rev": "604eb62ed26dca112982adfbb511244807216245",
+      "rev": "e510d325e684a55f7e96a9a136553074a983c0a9",
       "src": "https://github.com/sudo-tee/opencode.nvim"
     },
     "pi-agent.nvim": {
@@ -172,7 +172,7 @@
       "src": "https://github.com/tpope/vim-sleuth"
     },
     "vimade": {
-      "rev": "a5323f4930e3f1f48c0329e50bd218ba61577aaf",
+      "rev": "3d3d2db7ecd43c0181b20fede11d26f090dbc0d9",
       "src": "https://github.com/tadaa/vimade"
     },
     "which-key.nvim": {
