@@ -39,7 +39,10 @@ jq = "latest"
 bat = "latest"
 "github:can1357/oh-my-pi" = "latest"
 chezmoi = "latest"
-claude = "latest"
+
+[tools.claude]
+version = "latest"
+minimum_release_age = "1d"
 
 [settings]
 lockfile = true
