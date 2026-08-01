@@ -39,6 +39,7 @@ jq = "latest"
 bat = "latest"
 "github:can1357/oh-my-pi" = "latest"
 chezmoi = "latest"
+ffmpeg = "latest"
 
 [tools.claude]
 version = "latest"
