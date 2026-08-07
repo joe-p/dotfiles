@@ -44,3 +44,4 @@ sudo usermod -aG docker $USER
 sh ./mise-install.sh
 cp -r ../dot_config/mise ~/.config/
 mise install
+mise exec -- chezmoi apply
