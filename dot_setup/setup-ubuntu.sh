@@ -40,4 +40,5 @@ sudo usermod -aG docker $USER
 # Install tools
 #########################
 sh ./mise-install.sh
+cp -r ../dot_config/mise ~/.config/
 mise install
