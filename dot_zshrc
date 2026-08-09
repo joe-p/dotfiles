@@ -58,7 +58,7 @@ function vim {
 
 function cme {
     cwd=$(pwd)
-    cd ~/.local/share/chezmoi && nvim && chezmoi apply
+    chezmoi re-add && cd ~/.local/share/chezmoi && nvim && chezmoi apply
     source ~/.zshrc
     cd $cwd 
 }
