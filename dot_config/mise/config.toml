@@ -42,6 +42,7 @@ chezmoi = "latest"
 ffmpeg = "latest"
 "aqua:ip7z/7zip" = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
+bun = "latest"
 
 [tools.claude]
 version = "latest"
