@@ -28,4 +28,7 @@ require('opencode').setup {
       enabled = true, -- Include selected text in the context
     },
   },
+  ui = {
+    window_width = 0.5, -- Width as percentage of editor width
+  },
 }
