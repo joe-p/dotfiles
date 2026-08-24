@@ -43,6 +43,8 @@ ffmpeg = "latest"
 "aqua:ip7z/7zip" = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 bun = "latest"
+tokei = "latest"
+protoc = "latest"
 
 [tools.claude]
 version = "latest"
