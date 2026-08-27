@@ -45,6 +45,7 @@ ffmpeg = "latest"
 bun = "latest"
 tokei = "latest"
 protoc = "latest"
+codex = "latest"
 
 [tools.claude]
 version = "latest"
