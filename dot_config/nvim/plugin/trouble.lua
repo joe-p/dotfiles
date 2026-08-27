@@ -14,11 +14,7 @@ require('trouble').setup {
     buf_code_diags = {
       mode = 'diagnostics',
       focus = true,
-      filter = function(items)
-        return vim.tbl_filter(function(item)
-          return item.buf == 0 and item.item.source ~= 'Harper'
-        end, items)
-      end,
+      filter = { buf = 0, ['not'] = { source = 'Harper' } },
     },
   },
 }
