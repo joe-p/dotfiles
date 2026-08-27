@@ -83,6 +83,7 @@ vim.lsp.config('harper_ls', {
         SentenceCapitalization = false,
         Dashes = false,
         ExpandMemoryShorthands = false,
+        LongSentences = false,
       },
     },
   },
