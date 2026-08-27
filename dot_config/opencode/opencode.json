@@ -2,4 +2,7 @@
   "model": "openai/gpt-5.6-terra",
   "lsp": true,
   "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "*": "allow"
+  }
 }
