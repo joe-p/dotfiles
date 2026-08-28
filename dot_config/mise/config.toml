@@ -46,6 +46,7 @@ bun = "latest"
 tokei = "latest"
 protoc = "latest"
 codex = "latest"
+"cargo:typos-lsp" = "latest"
 
 [tools.claude]
 version = "latest"
