@@ -4,7 +4,7 @@ vim.pack.add {
 }
 
 require('opencode').setup {
-  default_mode = 'plan',
+  default_mode = 'build',
   preferred_picker = 'snacks',
   keymap = {
     input_window = {
