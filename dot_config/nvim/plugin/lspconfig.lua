@@ -84,8 +84,22 @@ vim.lsp.config('harper_ls', {
         Dashes = false,
         ExpandMemoryShorthands = false,
         LongSentences = false,
+        SpellCheck = false,
       },
     },
+  },
+})
+
+vim.lsp.config('typos_lsp', {
+  -- typos-lsp must be on your PATH, or otherwise change this to an absolute path to typos-lsp
+  -- defaults to typos-lsp if unspecified
+  cmd = { 'typos-lsp' },
+  -- Logging level of the language server. Logs appear in :LspLog. Defaults to error.
+  cmd_env = { RUST_LOG = 'typos_lsp=error' },
+  init_options = {
+    -- How typos are rendered in the editor, can be one of an Error, Warning, Info or Hint.
+    -- Defaults to Info.
+    diagnosticSeverity = 'Hint',
   },
 })
 
@@ -103,6 +117,7 @@ local enabled_lsps = {
   'clangd',
   'kotlin_lsp',
   'denols',
+  'typos_lsp',
 }
 
 for _, lsp in ipairs(enabled_lsps) do
