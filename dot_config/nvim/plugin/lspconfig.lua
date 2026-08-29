@@ -103,6 +103,14 @@ vim.lsp.config('typos_lsp', {
   },
 })
 
+vim.lsp.config('vtsls', {
+  settings = {
+    vtsls = {
+      autoUseWorkspaceTsdk = true,
+    },
+  },
+})
+
 local enabled_lsps = {
   'lua_ls',
   'gopls',
