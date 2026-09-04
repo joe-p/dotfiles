@@ -119,7 +119,7 @@ local enabled_lsps = {
   'basedpyright',
   'circom-lsp',
   'sourcekit',
-  'harper_ls',
+  -- 'harper_ls',
   'zls',
   'puyats-ls',
   'clangd',
