@@ -47,10 +47,8 @@ tokei = "latest"
 protoc = "latest"
 codex = "latest"
 "cargo:typos-lsp" = "latest"
-
-[tools.claude]
-version = "latest"
-minimum_release_age = "1d"
+antigravity-cli = "latest"
+claude = "latest"
 
 [settings]
 lockfile = true
