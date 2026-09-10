@@ -49,6 +49,7 @@ codex = "latest"
 "cargo:typos-lsp" = "latest"
 antigravity-cli = "latest"
 claude = "latest"
+"go:github.com/boyter/scc/v4" = "latest"
 
 [settings]
 lockfile = true
