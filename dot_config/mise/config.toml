@@ -50,6 +50,7 @@ codex = "latest"
 antigravity-cli = "latest"
 claude = "latest"
 "go:github.com/boyter/scc/v4" = "latest"
+gh = "latest"
 
 [settings]
 lockfile = true
