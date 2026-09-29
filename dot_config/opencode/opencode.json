@@ -1,5 +1,5 @@
 {
-  "model": "openai/gpt-5.6-terra",
+  "model": "opencode/deepseek-v4.1-flash",
   "lsp": true,
   "$schema": "https://opencode.ai/config.json",
   "permission": {
