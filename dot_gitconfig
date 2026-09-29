@@ -23,6 +23,9 @@
 
 [url "git@github.com:"]
     pushInsteadOf = https://github.com/
+    pushInsteadOf = http://github.com/
 
 [alias]
 	dft = !git -c diff.external=difft --no-pager diff
+[init]
+	defaultBranch = main
