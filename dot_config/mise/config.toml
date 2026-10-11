@@ -26,7 +26,6 @@ uv = "latest"
 gitleaks = "latest"
 hyperfine = "latest"
 cmake = "latest"
-opencode = "latest"
 "pipx:yq" = "latest"
 "pipx:algokit" = "latest"
 "pipx:mypy" = "latest"
@@ -51,6 +50,7 @@ antigravity-cli = "latest"
 claude = "latest"
 "go:github.com/boyter/scc/v4" = "latest"
 gh = "latest"
+"npm:@opencode/cli" = "latest"
 
 [settings]
 lockfile = true
