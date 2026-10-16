@@ -1,12 +1,12 @@
-vim.pack.add({ 'https://github.com/stevearc/conform.nvim' })
+vim.pack.add { 'https://github.com/stevearc/conform.nvim' }
 
-require('conform').setup({
+require('conform').setup {
   formatters_by_ft = {
     lua = { 'stylua' },
     python = { 'black' },
     typescript = { 'prettier' },
     javascript = { 'prettier' },
-    markdown = { 'mdformat' },
+    markdown = { 'markdownlint-cli2', 'prettier' },
     json = { 'prettier' },
     c = { 'clang-format' },
     typst = { 'typstyle' },
@@ -17,7 +17,7 @@ require('conform').setup({
       return
     end
 
-    if vim.fn.expand('%:e') == 'ipynb' then
+    if vim.fn.expand '%:e' == 'ipynb' then
       return
     end
 
@@ -26,7 +26,7 @@ require('conform').setup({
       lsp_format = 'fallback',
     }
   end,
-})
+}
 
 vim.keymap.set('n', '<leader>Tf', function()
   vim.g.disable_autoformat = not vim.g.disable_autoformat
