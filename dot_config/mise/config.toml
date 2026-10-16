@@ -50,7 +50,8 @@ antigravity-cli = "latest"
 claude = "latest"
 "go:github.com/boyter/scc/v4" = "latest"
 gh = "latest"
-"npm:@opencode/cli" = "latest"
+"npm:@opencode/cli" = { version = "latest", allow_builds = ["@opencode/cli"] }
+markdownlint-cli2 = "latest"
 
 [settings]
 lockfile = true
