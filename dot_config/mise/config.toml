@@ -8,7 +8,6 @@ lazydocker = "latest"
 sd = "latest"
 fd = "latest"
 pnpm = "latest"
-pi = "latest"
 go = "latest"
 rust = "latest"
 lua-language-server = "latest"
@@ -52,6 +51,7 @@ claude = "latest"
 gh = "latest"
 "npm:@opencode/cli" = { version = "latest", allow_builds = ["@opencode/cli"] }
 markdownlint-cli2 = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
 
 [settings]
 lockfile = true
