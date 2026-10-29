@@ -25,6 +25,10 @@
     pushInsteadOf = https://github.com/
     pushInsteadOf = http://github.com/
 
+[url "git@codeberg.org:"]
+    pushInsteadOf = https://codeberg.org/
+    pushInsteadOf = http://codeberg.org/
+
 [alias]
 	dft = !git -c diff.external=difft --no-pager diff
 [init]
