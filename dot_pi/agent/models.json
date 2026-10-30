@@ -1,7 +1,15 @@
 {
   "providers": {
-    "openrouter": {
-      "baseUrl": "http://localhost:7777/openrouter/pi/api/v1"
+    "litellm-phala": {
+      "baseUrl": "http://100.101.224.41:4000/phala/v1",
+      "api": "openai-completions",
+      "authHeader": true
+    },
+    "litellm-openrouter": {
+      "baseUrl": "http://100.101.224.41:4000/openrouter/v1",
+      "api": "openai-completions",
+      "authHeader": true
     }
+
   }
 }

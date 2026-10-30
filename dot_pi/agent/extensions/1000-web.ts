@@ -9,21 +9,14 @@ import {
   type Theme,
   AgentToolResult,
 } from "@mariozechner/pi-coding-agent";
-import { sandbox } from "./5000-sandbox";
 import { Markdown, Text } from "@mariozechner/pi-tui";
-import {
-  domainIsAllowed,
-  domainMatchesPattern,
-  promptDomainBlock,
-} from "./lib/pi-sandbox";
+
 import { Readability } from "@mozilla/readability";
 import { JSDOM } from "jsdom";
 import TurndownService from "turndown";
 
 // @ts-expect-error no types for this package
 import { gfm } from "turndown-plugin-gfm";
-import { getOrPromptForKey } from "./1000-keyring";
-import { IN_CONTAINER } from "./lib/in-container";
 
 const USERNAME = "skills/brave-search";
 
@@ -33,11 +26,7 @@ async function fetchBraveResults(
   numResults?: number,
   freshness?: string,
 ) {
-  const apiKey = await getOrPromptForKey(ctx, USERNAME);
-  if (apiKey === null) {
-    throw Error("NO API KEY!");
-  }
-
+  const apiKey = process.env.BRAVE_KEY!;
   const params = new URLSearchParams({
     q: query,
     count: Math.min(numResults ?? 5, 20).toString(),
@@ -49,12 +38,6 @@ async function fetchBraveResults(
   }
 
   let url = `/res/v1/web/search?${params.toString()}`;
-
-  if (IN_CONTAINER) {
-    url = "http://localhost:7777/brave/pi" + url;
-  } else {
-    url = "https://api.search.brave.com" + url;
-  }
 
   const response = await fetch(url, {
     headers: {
@@ -318,54 +301,4 @@ export default function (pi: ExtensionAPI) {
       return new Markdown(markdown, 1, 1, mdTheme);
     },
   });
-
-  if (!IN_CONTAINER) {
-    // ── tool_call hook — network policy for web_fetch ────────────────────────────
-    pi.on("tool_call", async (event, ctx: ExtensionContext) => {
-      // Only intercept web_fetch tool calls
-      if (event.toolName !== "web_fetch") return;
-
-      const config = sandbox.loadConfig(ctx.cwd);
-
-      const urlString = (event.input as { url: string }).url;
-      let domain: string;
-
-      try {
-        const url = new URL(urlString);
-        domain = url.hostname;
-      } catch {
-        return {
-          block: true,
-          reason: `Invalid URL format: "${urlString}"`,
-        };
-      }
-
-      const deniedDomains = config.network?.deniedDomains ?? [];
-
-      // Check if domain is explicitly denied (hard block, no prompt)
-      if (deniedDomains.some((p) => domainMatchesPattern(domain, p))) {
-        return {
-          block: true,
-          reason: `Network access to "${domain}" is blocked (in deniedDomains).`,
-        };
-      }
-
-      // Check if domain is allowed (includes session-allowed domains)
-      const effectiveDomains = sandbox.getEffectiveAllowedDomains(ctx.cwd);
-
-      if (!domainIsAllowed(domain, effectiveDomains)) {
-        // Prompt user for action (share session state with sandbox extension)
-        const choice = await promptDomainBlock(ctx, domain);
-        if (choice === "abort") {
-          return {
-            block: true,
-            reason: `Network access to "${domain}" is blocked (not in allowedDomains). Use /sandbox to review your config.`,
-          };
-        }
-        // Apply the choice - this adds to sessionAllowedDomains and config if needed
-        await sandbox.applyDomainChoice(choice, domain, ctx.cwd);
-        // Domain is now allowed for this call - fall through to allow execution
-      }
-    });
-  }
 }
