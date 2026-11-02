@@ -113,3 +113,7 @@ source <(fzf --zsh)
 PATH="$PATH:/usr/sbin:/sbin"
 export PATH
 # Lima END
+
+export NARGO_HOME="/home/joe.guest/.nargo"
+
+export PATH="$PATH:$NARGO_HOME/bin"
