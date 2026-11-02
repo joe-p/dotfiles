@@ -60,8 +60,8 @@ function vim {
 # lazygit see the dotfiles repository instead of searching from $HOME.
 function cme {
     cwd=$(pwd)
-    cd "$HOME"
-    GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" nvim "$@"
+    cd "$@"
+    GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" nvim
     cd "$cwd"
 }
 
