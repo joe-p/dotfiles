@@ -56,10 +56,12 @@ function vim {
     fi
 }
 
-# Stage changes to tracked dotfiles and show what changed
+# Edit dotfiles in Neovim with the bare repo as GIT_DIR, so gitsigns and
+# lazygit see the dotfiles repository instead of searching from $HOME.
 function cme {
     cwd=$(pwd)
-    dotfiles add -u && dotfiles status
+    cd "$HOME"
+    GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" nvim "$@"
     cd "$cwd"
 }
 

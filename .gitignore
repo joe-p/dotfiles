@@ -33,6 +33,7 @@
 !.pi/
 !.pi/agent/
 !.pi/agent/**
+.pi/agent/models-store.json
 
 # ~/.setup
 !.setup/
