@@ -42,6 +42,7 @@ sudo usermod -aG docker $USER
 # Install tools
 #########################
 sh ./mise-install.sh
-cp -r ../dot_config/mise ~/.config/
 ~/.local/bin/mise install
-~/.local/bin/mise exec -- chezmoi apply
+
+# Initialize submodules (e.g. the pure prompt)
+git --git-dir="$HOME/.dotfiles" --work-tree="$HOME" submodule update --init --recursive

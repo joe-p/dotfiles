@@ -1,0 +1,45 @@
+# The dotfiles repository uses $HOME as its work tree, so ignore everything
+# that is not explicitly managed here.
+*
+!.gitignore
+!.gitmodules
+!README.md
+
+# Shell
+!.zshrc
+!.zsh/
+!.zsh/pure
+
+# Git
+!.gitconfig
+
+# ~/.config
+!.config/
+!.config/lazygit/
+!.config/lazygit/*
+!.config/mise/
+!.config/mise/*
+!.config/nvim/
+!.config/nvim/**
+!.config/opencode/
+!.config/opencode/*
+
+# ~/.omp
+!.omp/
+!.omp/agent/
+!.omp/agent/*
+
+# ~/.pi
+!.pi/
+!.pi/agent/
+!.pi/agent/**
+
+# ~/.setup
+!.setup/
+!.setup/*
+
+# Generated files and secrets
+**/node_modules/
+**/auth.json
+**/sessions/
+**/.pnpm-store/

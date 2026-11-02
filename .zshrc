@@ -56,11 +56,11 @@ function vim {
     fi
 }
 
+# Stage changes to tracked dotfiles and show what changed
 function cme {
     cwd=$(pwd)
-    chezmoi re-add && cd ~/.local/share/chezmoi && nvim && chezmoi apply
-    source ~/.zshrc
-    cd $cwd 
+    dotfiles add -u && dotfiles status
+    cd "$cwd"
 }
 
 ####################
