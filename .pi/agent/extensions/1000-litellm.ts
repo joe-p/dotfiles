@@ -77,7 +77,24 @@ interface LiteLlmProviderDefinition {
 }
 
 const catalogCaches = new Map<string, CatalogCache>();
-const registeredProviders = new Map<string, string>();
+
+// Pi caches the extension factory per cwd, so this module is only imported once and
+// its top-level state survives session replacement (/new, /fork, resume, reload).
+// Each replacement builds a brand-new model runtime, and provider registrations
+// only land in the runtime that was active when registerProvider() was called.
+// Keying the duplicate-registration guard by the extension API instance (one per
+// session) re-registers providers for the new runtime; a module-wide map would
+// skip that and leave the new runtime without the litellm catalog.
+const registrationsByApi = new WeakMap<ExtensionAPI, Map<string, string>>();
+
+function registrationsFor(pi: ExtensionAPI): Map<string, string> {
+  let registrations = registrationsByApi.get(pi);
+  if (!registrations) {
+    registrations = new Map();
+    registrationsByApi.set(pi, registrations);
+  }
+  return registrations;
+}
 
 function getAgentDir(): string {
   const configured = process.env.PI_CODING_AGENT_DIR?.trim();
@@ -524,6 +541,7 @@ function createRefreshModels(provider: LiteLlmProviderDefinition) {
 
 function syncProviders(pi: ExtensionAPI): string[] {
   const definitions = discoverLiteLlmProviders();
+  const registeredProviders = registrationsFor(pi);
   const seen = new Set<string>();
 
   for (const definition of definitions) {
