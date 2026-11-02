@@ -5,6 +5,11 @@
       "api": "openai-completions",
       "authHeader": true
     },
+    "litellm-opencode": {
+      "baseUrl": "http://100.101.224.41:4000/opencode/v1",
+      "api": "openai-completions",
+      "authHeader": true
+    },
     "litellm-openrouter": {
       "baseUrl": "http://100.101.224.41:4000/openrouter/v1",
       "api": "openai-completions",
