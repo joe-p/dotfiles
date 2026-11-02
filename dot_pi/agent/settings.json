@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "1.4.0",
-  "defaultProvider": "openrouter",
-  "defaultModel": "moonshotai/kimi-k2.5",
+  "defaultProvider": "litellm-openrouter",
+  "defaultModel": "deepseek/deepseek-v4.1-flash-1017",
   "defaultThinkingLevel": "medium",
   "theme": "catppuccin-macchiato",
   "compaction": {
