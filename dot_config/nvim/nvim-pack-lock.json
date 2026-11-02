@@ -96,6 +96,10 @@
       "src": "https://github.com/nvim-mini/mini.statusline",
       "version": ">=0.0.0"
     },
+    "noir-nvim": {
+      "rev": "d78fe4339b9f66ad02a1a59c7281c198deb8a64a",
+      "src": "https://github.com/noir-lang/noir-nvim"
+    },
     "nui.nvim": {
       "rev": "10fc361835c856ba4233ef5ea135b919bf3dce97",
       "src": "https://github.com/MunifTanjim/nui.nvim"
