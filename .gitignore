@@ -23,6 +23,7 @@
 !.config/nvim/**
 !.config/opencode/
 !.config/opencode/*
+.config/opencode/service.json
 
 # ~/.omp
 !.omp/
