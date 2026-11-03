@@ -1,19 +1,23 @@
 {
-  "model": "opencode/deepseek-v4.1-flash",
+  "model": "openrouter/deepseek/deepseek-v4.1-flash-1017",
   "lsp": true,
   "$schema": "https://opencode.ai/config.json",
   "permission": {
     "*": "allow"
   },
   "provider": {
-    "cerebras": {
-      "npm": "@ai-sdk/cerebras",
-      "options": {
-        "baseURL": "https://api.cerebras.ai/v1"
-      },
+    "openrouter": {
       "models": {
-        "qwen-3.8-27b": {
-          "name": "Qwen 3.8 27b"
+        "deepseek/deepseek-v4.1-flash-1017": {
+          "name": "DS v4.1 Flash 1017 (wafer, together, inference.net)",
+          "options": {
+            "provider": {
+              "order": ["wafer/mxfp4", "together", "inference-net/fp8"], 
+              "allow_fallbacks": false,
+              "data_collection": "deny", 
+              "zdr": true
+            },
+          }
         }
       }
     }
