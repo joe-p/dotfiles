@@ -24,6 +24,8 @@
 !.config/opencode/
 !.config/opencode/*
 .config/opencode/service.json
+!.config/kitty/
+!.config/kitty/*
 
 # ~/.omp
 !.omp/
