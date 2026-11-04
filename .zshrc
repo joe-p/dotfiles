@@ -119,3 +119,5 @@ export PATH
 export NARGO_HOME="/home/joe.guest/.nargo"
 
 export PATH="$PATH:$NARGO_HOME/bin"
+export PATH="${HOME}/.bb:${PATH}"
+export PATH="/home/joe.guest/.bb:$PATH"
