@@ -1,6 +1,15 @@
 autoload -Uz compinit && compinit
 
 ####################
+# OS
+####################
+case "$OSTYPE" in
+    darwin*) DOTFILES_OS=mac ;;
+    linux*)  DOTFILES_OS=linux ;;
+    *)       DOTFILES_OS=unknown ;;
+esac
+
+####################
 # variables
 ####################
 if [ -n "${NVIM}" ]; then
@@ -19,11 +28,35 @@ export CLAUDE_CODE_AGENT_RULE_DISABLED=1
 ####################
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$HOME/.bun/bin:$PATH"
+export NARGO_HOME="$HOME/.nargo"
+export PATH="$PATH:$NARGO_HOME/bin"
+export PATH="$HOME/.bb:$PATH"
+
+if [[ "$DOTFILES_OS" == "mac" ]]; then
+    export PATH="/opt/homebrew/bin:$PATH"
+    export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+    export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+    export SSH_AUTH_SOCK="$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh"
+
+    # Add brew auto completions
+    if type brew &>/dev/null; then
+        FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+    fi
+elif [[ "$DOTFILES_OS" == "linux" ]]; then
+    # Lima: make sure iptables and mount.fuse3 are available
+    export PATH="$PATH:/usr/sbin:/sbin"
+
+
+fi
 
 ####################
 # mise
 ####################
-eval "$(mise activate zsh)"
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+    eval "$(mise activate zsh --shims)"
+else
+    eval "$(mise activate zsh)"
+fi
 
 ####################
 # Emscripten
@@ -69,7 +102,9 @@ function cme {
 # Completions
 ####################
 
-eval `dircolors -b`
+if command -v dircolors >/dev/null 2>&1; then
+    eval "$(dircolors -b)"
+fi
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
@@ -97,9 +132,14 @@ bindkey '^[[B' history-search-forward
 ####################
 # Pure
 ####################
-# Make sure we are using UTF-8 so pure's prompt multi-byte glyph renders correctly
-export LANG=C.UTF-8
-export LC_ALL=C.UTF-8
+if [[ "$DOTFILES_OS" == "linux" ]]; then
+    # Make sure we are using UTF-8 so pure's prompt multi-byte glyph renders correctly
+    export LANG=C.UTF-8
+    export LC_ALL=C.UTF-8
+elif [[ "$DOTFILES_OS" == "mac" ]]; then
+    export LANG=en_US.UTF-8
+    export LC_ALL=en_US.UTF-8
+fi
 
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
@@ -109,15 +149,3 @@ zstyle :prompt:pure:git:stash show yes
 prompt pure
 
 source <(fzf --zsh)
-
-# Lima BEGIN
-# Make sure iptables and mount.fuse3 are available
-PATH="$PATH:/usr/sbin:/sbin"
-export PATH
-# Lima END
-
-export NARGO_HOME="/home/joe.guest/.nargo"
-
-export PATH="$PATH:$NARGO_HOME/bin"
-export PATH="${HOME}/.bb:${PATH}"
-export PATH="/home/joe.guest/.bb:$PATH"
