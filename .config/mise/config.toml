@@ -51,6 +51,7 @@ gh = "latest"
 "npm:@opencode/cli" = { version = "latest", allow_builds = ["@opencode/cli"] }
 markdownlint-cli2 = "latest"
 "npm:@earendil-works/pi-coding-agent" = "latest"
+prettier = "latest"
 
 [settings]
 lockfile = true

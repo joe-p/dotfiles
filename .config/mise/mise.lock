@@ -8812,6 +8812,10 @@ url = "https://github.com/pnpm/pnpm/releases/download/v11.0.6/pnpm-win32-x64.zip
 url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/412856433"
 provenance = "github-attestations"
 
+[[tools.prettier]]
+version = "3.9.10"
+backend = "npm:prettier"
+
 [[tools.protoc]]
 version = "35.1"
 backend = "aqua:protocolbuffers/protobuf/protoc"
@@ -8985,7 +8989,7 @@ url = "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15
 url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/307305871"
 
 [[tools.rust]]
-version = "1.99.1"
+version = "1.97.1"
 backend = "core:rust"
 
 [[tools.sd]]
