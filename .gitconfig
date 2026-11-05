@@ -18,9 +18,6 @@
     process = git-lfs filter-process
     required = true
 
-[core]
-    hooksPath = /Users/joe/.githooks
-
 [url "git@github.com:"]
     pushInsteadOf = https://github.com/
     pushInsteadOf = http://github.com/
