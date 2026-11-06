@@ -699,6 +699,9 @@ function syncProviders(pi: ExtensionAPI): string[] {
 }
 
 export default function (pi: ExtensionAPI) {
+  // Register discovery before Pi selects the startup model or lists models.
+  syncProviders(pi);
+
   pi.registerCommand("litellm-refresh", {
     description:
       "Reload litellm-* providers and refresh their /models catalogs",
