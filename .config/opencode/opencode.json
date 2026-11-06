@@ -12,11 +12,11 @@
           "name": "DS v4.1 Flash 1017 (wafer, together, inference.net)",
           "options": {
             "provider": {
-              "order": ["wafer/mxfp4", "together", "inference-net/fp8"], 
+              "order": ["wafer/mxfp4", "together", "inference-net/fp8"],
               "allow_fallbacks": false,
-              "data_collection": "deny", 
+              "data_collection": "deny",
               "zdr": true
-            },
+            }
           }
         }
       }
