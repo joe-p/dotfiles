@@ -13,7 +13,7 @@ import { join } from "node:path";
  * found during an earlier run are still available when an endpoint is offline.
  */
 
-const PROVIDER_PREFIX = "litellm-";
+const PROVIDER_PREFIX = "litellm";
 const MODELS_FILENAME = "models.json";
 const AUTH_FILENAME = "auth.json";
 const CATALOG_TTL_MS = 5 * 60 * 1000;
@@ -620,8 +620,8 @@ export default function (pi: ExtensionAPI) {
       const requested = args.trim();
       const selected = requested
         ? providerIds.filter(
-          (id) => id === requested || id === `${PROVIDER_PREFIX}${requested}`,
-        )
+            (id) => id === requested || id === `${PROVIDER_PREFIX}${requested}`,
+          )
         : providerIds;
       if (selected.length === 0) {
         ctx.ui.notify(
