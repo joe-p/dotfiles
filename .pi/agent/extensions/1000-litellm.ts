@@ -198,7 +198,9 @@ function readInput(raw: Record<string, unknown>): InputModality[] {
     ...stringArray(architecture.input_modalities),
   ];
 
-  return modalities.includes("image") || info.supports_vision === true
+  return modalities.includes("image") ||
+    raw.supports_vision === true ||
+    info.supports_vision === true
     ? ["text", "image"]
     : ["text"];
 }
@@ -236,6 +238,7 @@ function isReasoningModel(raw: Record<string, unknown>, id: string): boolean {
   ].map((entry) => entry.toLowerCase());
 
   return (
+    raw.supports_reasoning === true ||
     info.supports_reasoning === true ||
     capabilities.some((entry) =>
       ["reasoning", "include_reasoning", "reasoning_effort"].includes(entry),
@@ -256,11 +259,13 @@ function toModel(
   const info = record(raw.model_info) ?? {};
   const contextWindow =
     numberValue(raw.context_length) ??
+    numberValue(raw.max_input_tokens) ??
     numberValue(info.max_input_tokens) ??
     numberValue(info.max_tokens) ??
     defaultContextWindow(info);
   const maxTokens =
     numberValue(raw.max_output_length) ??
+    numberValue(raw.max_output_tokens) ??
     numberValue(info.max_output_tokens) ??
     numberValue(info.max_completion_tokens) ??
     Math.min(DEFAULT_MAX_TOKENS, contextWindow);
@@ -282,17 +287,21 @@ function defaultContextWindow(info: Record<string, unknown>): number {
   return numberValue(info.context_window) ?? DEFAULT_CONTEXT_WINDOW;
 }
 
-function extractModels(payload: unknown, baseUrl: string): DynamicModel[] {
-  const entries = Array.isArray(payload)
-    ? payload
-    : Array.isArray(record(payload)?.data)
-      ? (record(payload)!.data as unknown[])
-      : Array.isArray(record(payload)?.models)
-        ? (record(payload)!.models as unknown[])
-        : [];
+function catalogEntries(payload: unknown): unknown[] {
+  if (Array.isArray(payload)) {
+    return payload;
+  }
+  const data = record(payload)?.data;
+  if (Array.isArray(data)) {
+    return data;
+  }
+  const models = record(payload)?.models;
+  return Array.isArray(models) ? models : [];
+}
 
+function extractModels(payload: unknown, baseUrl: string): DynamicModel[] {
   const models = new Map<string, DynamicModel>();
-  for (const entry of entries) {
+  for (const entry of catalogEntries(payload)) {
     const raw = record(entry);
     const model = raw && toModel(raw, baseUrl);
     if (model) {
@@ -301,6 +310,61 @@ function extractModels(payload: unknown, baseUrl: string): DynamicModel[] {
   }
 
   return [...models.values()];
+}
+
+function applyModelInfo(
+  models: DynamicModel[],
+  payload: unknown,
+): DynamicModel[] {
+  const byId = new Map<string, Record<string, unknown>>();
+  for (const entry of catalogEntries(payload)) {
+    const raw = record(entry);
+    if (!raw) {
+      continue;
+    }
+    const id =
+      stringValue(raw.model_name) ??
+      stringValue(raw.id) ??
+      stringValue(record(raw.model_info)?.id);
+    if (id) {
+      byId.set(id, raw);
+    }
+  }
+  if (byId.size === 0) {
+    return models;
+  }
+
+  return models.map((model) => {
+    const raw = byId.get(model.id);
+    if (!raw) {
+      return model;
+    }
+
+    const info = record(raw.model_info) ?? {};
+    const contextWindow =
+      numberValue(raw.max_input_tokens) ??
+      numberValue(info.max_input_tokens) ??
+      numberValue(info.max_tokens) ??
+      model.contextWindow;
+    const maxTokens =
+      numberValue(raw.max_output_tokens) ??
+      numberValue(info.max_output_tokens) ??
+      numberValue(info.max_completion_tokens) ??
+      model.maxTokens;
+    const input =
+      info.supports_vision === true && !model.input.includes("image")
+        ? (["text", "image"] as InputModality[])
+        : model.input;
+
+    return {
+      ...model,
+      name: stringValue(raw.name) ?? stringValue(info.name) ?? model.name,
+      reasoning: model.reasoning || info.supports_reasoning === true,
+      input,
+      contextWindow,
+      maxTokens,
+    };
+  });
 }
 
 function restoreModels(
@@ -350,17 +414,53 @@ function restoreModels(
   return models;
 }
 
+function authorizationHeaders(
+  credential: RefreshContext["credential"],
+): Record<string, string> {
+  const headers: Record<string, string> = { Accept: "application/json" };
+  const apiKey = credential?.type === "api_key" ? credential.key : undefined;
+  if (apiKey && apiKey !== DUMMY_API_KEY) {
+    headers.Authorization = `Bearer ${apiKey}`;
+  }
+  return headers;
+}
+
+async function fetchModelInfo(
+  baseUrl: string,
+  credential: RefreshContext["credential"],
+  signal: AbortSignal,
+): Promise<unknown> {
+  const endpoint = `${baseUrl.replace(/\/+$/, "")}/model/info`;
+  const controller = new AbortController();
+  const timeout = setTimeout(
+    () => controller.abort(new Error("Model info request timed out")),
+    REQUEST_TIMEOUT_MS,
+  );
+  const forwardAbort = () => controller.abort(signal.reason);
+  signal.addEventListener("abort", forwardAbort, { once: true });
+
+  try {
+    const response = await fetch(endpoint, {
+      headers: authorizationHeaders(credential),
+      signal: controller.signal,
+    });
+    return response.ok ? await response.json() : undefined;
+  } catch {
+    // Older LiteLLM versions and compatible proxies may not expose /model/info.
+    return undefined;
+  } finally {
+    clearTimeout(timeout);
+    signal.removeEventListener("abort", forwardAbort);
+  }
+}
+
 async function fetchCatalog(
   baseUrl: string,
   credential: RefreshContext["credential"],
   signal: AbortSignal,
 ): Promise<DynamicModel[]> {
   const endpoint = `${baseUrl.replace(/\/+$/, "")}/models`;
-  const headers: Record<string, string> = { Accept: "application/json" };
-  const apiKey = credential?.type === "api_key" ? credential.key : undefined;
-  if (apiKey && apiKey !== DUMMY_API_KEY) {
-    headers.Authorization = `Bearer ${apiKey}`;
-  }
+  const headers = authorizationHeaders(credential);
 
   const controller = new AbortController();
   const timeout = setTimeout(
@@ -385,7 +485,9 @@ async function fetchCatalog(
     if (models.length === 0) {
       throw new Error(`GET ${endpoint} returned no chat models`);
     }
-    return models;
+
+    const info = await fetchModelInfo(baseUrl, credential, signal);
+    return info === undefined ? models : applyModelInfo(models, info);
   } finally {
     clearTimeout(timeout);
     signal.removeEventListener("abort", forwardAbort);
