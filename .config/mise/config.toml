@@ -53,6 +53,7 @@ markdownlint-cli2 = "latest"
 prettier = "latest"
 opencode = { version = "latest", allow_builds = ["@opencode/cli"] }
 "npm:skills" = "latest"
+pi = "latest"
 
 [settings]
 lockfile = true
