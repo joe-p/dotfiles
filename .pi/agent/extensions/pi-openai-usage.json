@@ -1,0 +1,29 @@
+{
+  "enabled": true,
+  "display": {
+    "showAlways": false,
+    "showLabel": true
+  },
+  "bar": {
+    "style": "squares",
+    "width": 10
+  },
+  "widgets": {
+    "fiveHour": {
+      "enabled": true,
+      "mode": "bar-percent"
+    },
+    "fiveHourReset": {
+      "enabled": true,
+      "mode": "countdown"
+    },
+    "sevenDay": {
+      "enabled": true,
+      "mode": "bar-percent"
+    }
+  },
+  "colors": {
+    "scheme": "none"
+  },
+  "refreshIntervalMs": 60000
+}
