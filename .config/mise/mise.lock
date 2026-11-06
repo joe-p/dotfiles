@@ -8734,6 +8734,10 @@ backend = "npm:@earendil-works/pi-coding-agent"
 version = "0.3.0"
 backend = "npm:@vtsls/language-server"
 
+[[tools."npm:skills"]]
+version = "1.7.4"
+backend = "npm:skills"
+
 [[tools.opencode]]
 version = "2.2.2"
 backend = "npm:@opencode/cli"
