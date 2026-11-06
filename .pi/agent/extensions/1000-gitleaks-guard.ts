@@ -187,13 +187,6 @@ export default async function (pi: ExtensionAPI) {
 		return;
 	}
 
-	console.log("[gitleaks-guard] Extension loaded");
-
-	// Check for custom config
-	if (existsSync(CONFIG_PATH)) {
-		console.log(`[gitleaks-guard] Using custom config: ${CONFIG_PATH}`);
-	}
-
 	// Hook into tool results to scan content
 	pi.on("tool_result", async (event, ctx) => {
 		// Only scan read and bash tools

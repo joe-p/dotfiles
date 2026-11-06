@@ -699,13 +699,6 @@ function syncProviders(pi: ExtensionAPI): string[] {
 }
 
 export default function (pi: ExtensionAPI) {
-  const initialProviders = syncProviders(pi);
-  if (initialProviders.length > 0) {
-    log(
-      `Managing ${initialProviders.length} LiteLLM provider(s): ${initialProviders.join(", ")}`,
-    );
-  }
-
   pi.registerCommand("litellm-refresh", {
     description:
       "Reload litellm-* providers and refresh their /models catalogs",
