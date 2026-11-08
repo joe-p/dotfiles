@@ -7,5 +7,5 @@ sed -i '1iauth sufficient pam_ssh_agent_auth.so file=/etc/security/authorized_ke
 sed -i '1iauth sufficient pam_ssh_agent_auth.so file=/etc/security/authorized_keys' /etc/pam.d/sudo
 
 echo "Defaults env_keep += "SSH_AUTH_SOCK"" >> /etc/sudoers.d/999-force-auth
-echo "joe ALL=(ALL) ALL" >> /etc/sudoers.d/9999-ssh-agent-auth
+echo "${1:?usage: $0 USER} ALL=(ALL) ALL" >> /etc/sudoers.d/9999-ssh-agent-auth
 chmod 0440 /etc/sudoers.d/999-force-auth 
