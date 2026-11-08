@@ -5654,6 +5654,35 @@ checksum = "sha256:081df9e9311dfd9c9e0e98c1c80180b99bb51e4cb24156b5f3057fe3c259d
 url = "https://github.com/ip7z/7zip/releases/download/26.02/7z2602-extra.7z"
 url_api = "https://api.github.com/repos/ip7z/7zip/releases/assets/458363818"
 
+[[tools."aqua:smol-machines/smolvm"]]
+version = "1.32.4"
+backend = "aqua:smol-machines/smolvm"
+
+[tools."aqua:smol-machines/smolvm"."platforms.linux-x64"]
+checksum = "sha256:7b0580c2ef98e183ac5c3a1567eca3a336d58aa0e2ca5904350f7d3a851205e8"
+url = "https://github.com/smol-machines/smolvm/releases/download/v1.32.4/smolvm-1.32.4-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/smol-machines/smolvm/releases/assets/684230258"
+
+[tools."aqua:smol-machines/smolvm"."platforms.linux-x64-baseline"]
+checksum = "sha256:7b0580c2ef98e183ac5c3a1567eca3a336d58aa0e2ca5904350f7d3a851205e8"
+url = "https://github.com/smol-machines/smolvm/releases/download/v1.32.4/smolvm-1.32.4-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/smol-machines/smolvm/releases/assets/684230258"
+
+[tools."aqua:smol-machines/smolvm"."platforms.linux-x64-musl"]
+checksum = "sha256:7b0580c2ef98e183ac5c3a1567eca3a336d58aa0e2ca5904350f7d3a851205e8"
+url = "https://github.com/smol-machines/smolvm/releases/download/v1.32.4/smolvm-1.32.4-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/smol-machines/smolvm/releases/assets/684230258"
+
+[tools."aqua:smol-machines/smolvm"."platforms.linux-x64-musl-baseline"]
+checksum = "sha256:7b0580c2ef98e183ac5c3a1567eca3a336d58aa0e2ca5904350f7d3a851205e8"
+url = "https://github.com/smol-machines/smolvm/releases/download/v1.32.4/smolvm-1.32.4-linux-x86_64.tar.gz"
+url_api = "https://api.github.com/repos/smol-machines/smolvm/releases/assets/684230258"
+
+[tools."aqua:smol-machines/smolvm"."platforms.macos-arm64"]
+checksum = "sha256:64bee03d87f6cbf3a1ab0e0926b99cec45fac62900b0a37da15a8271a5c6de59"
+url = "https://github.com/smol-machines/smolvm/releases/download/v1.32.4/smolvm-1.32.4-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/smol-machines/smolvm/releases/assets/684230255"
+
 [[tools.bat]]
 version = "0.26.1"
 backend = "aqua:sharkdp/bat"
@@ -6528,61 +6557,51 @@ url_api = "https://api.github.com/repos/openai/codex/releases/assets/645213921"
 
 [tools.codex."platforms.linux-arm64-musl"]
 checksum = "sha256:9d8ecf2d19d3e184877983902d6c85de48b3888dcb72c382a8a0c975845927fb"
-checksum_source = "mise-versions"
 url = "https://github.com/openai/codex/releases/download/rust-v0.163.0/codex-package-aarch64-unknown-linux-musl.tar.gz"
 url_api = "https://api.github.com/repos/openai/codex/releases/assets/645213921"
 
 [tools.codex."platforms.linux-x64"]
 checksum = "sha256:582646c6bf0561eb0de540f7fc85b9121b0091a826bc6e96830b7f1722122182"
-checksum_source = "mise-versions"
 url = "https://github.com/openai/codex/releases/download/rust-v0.163.0/codex-package-x86_64-unknown-linux-musl.tar.gz"
 url_api = "https://api.github.com/repos/openai/codex/releases/assets/645227523"
 
 [tools.codex."platforms.linux-x64-baseline"]
 checksum = "sha256:582646c6bf0561eb0de540f7fc85b9121b0091a826bc6e96830b7f1722122182"
-checksum_source = "mise-versions"
 url = "https://github.com/openai/codex/releases/download/rust-v0.163.0/codex-package-x86_64-unknown-linux-musl.tar.gz"
 url_api = "https://api.github.com/repos/openai/codex/releases/assets/645227523"
 
 [tools.codex."platforms.linux-x64-musl"]
 checksum = "sha256:582646c6bf0561eb0de540f7fc85b9121b0091a826bc6e96830b7f1722122182"
-checksum_source = "mise-versions"
 url = "https://github.com/openai/codex/releases/download/rust-v0.163.0/codex-package-x86_64-unknown-linux-musl.tar.gz"
 url_api = "https://api.github.com/repos/openai/codex/releases/assets/645227523"
 
 [tools.codex."platforms.linux-x64-musl-baseline"]
 checksum = "sha256:582646c6bf0561eb0de540f7fc85b9121b0091a826bc6e96830b7f1722122182"
-checksum_source = "mise-versions"
 url = "https://github.com/openai/codex/releases/download/rust-v0.163.0/codex-package-x86_64-unknown-linux-musl.tar.gz"
 url_api = "https://api.github.com/repos/openai/codex/releases/assets/645227523"
 
 [tools.codex."platforms.macos-arm64"]
 checksum = "sha256:b0344fc2e41f15e0071147e5869008047b8ff4bf2c4a8897975d3bae3f103b34"
-checksum_source = "mise-versions"
 url = "https://github.com/openai/codex/releases/download/rust-v0.163.0/codex-package-aarch64-apple-darwin.tar.gz"
 url_api = "https://api.github.com/repos/openai/codex/releases/assets/645205118"
 
 [tools.codex."platforms.macos-x64"]
 checksum = "sha256:0c182d6194da7003943678dc87866b54b3dee719edaf8d092f304affbc6b57d1"
-checksum_source = "mise-versions"
 url = "https://github.com/openai/codex/releases/download/rust-v0.163.0/codex-package-x86_64-apple-darwin.tar.gz"
 url_api = "https://api.github.com/repos/openai/codex/releases/assets/645219584"
 
 [tools.codex."platforms.macos-x64-baseline"]
 checksum = "sha256:0c182d6194da7003943678dc87866b54b3dee719edaf8d092f304affbc6b57d1"
-checksum_source = "mise-versions"
 url = "https://github.com/openai/codex/releases/download/rust-v0.163.0/codex-package-x86_64-apple-darwin.tar.gz"
 url_api = "https://api.github.com/repos/openai/codex/releases/assets/645219584"
 
 [tools.codex."platforms.windows-x64"]
 checksum = "sha256:901028b285614a9974f431f9d9f6534b3e5ed8d62eba4ba64f4762c00f040522"
-checksum_source = "mise-versions"
 url = "https://github.com/openai/codex/releases/download/rust-v0.163.0/codex-package-x86_64-pc-windows-msvc.tar.gz"
 url_api = "https://api.github.com/repos/openai/codex/releases/assets/645224538"
 
 [tools.codex."platforms.windows-x64-baseline"]
 checksum = "sha256:901028b285614a9974f431f9d9f6534b3e5ed8d62eba4ba64f4762c00f040522"
-checksum_source = "mise-versions"
 url = "https://github.com/openai/codex/releases/download/rust-v0.163.0/codex-package-x86_64-pc-windows-msvc.tar.gz"
 url_api = "https://api.github.com/repos/openai/codex/releases/assets/645224538"
 
@@ -8766,61 +8785,51 @@ url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/663978
 
 [tools.pi."platforms.linux-arm64-musl"]
 checksum = "sha256:fa5829c7ef83ffeaebba015715c8306220f89b2aa8a00154efbba98dd5440156"
-checksum_source = "mise-versions"
 url = "https://github.com/earendil-works/pi/releases/download/v1.4.0/pi-linux-arm64.tar.gz"
 url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/663978804"
 
 [tools.pi."platforms.linux-x64"]
 checksum = "sha256:f2e4e4329603223d03260cdb8bd5033dbdc1f73ba58ab8939db2e56546e115d2"
-checksum_source = "mise-versions"
 url = "https://github.com/earendil-works/pi/releases/download/v1.4.0/pi-linux-x64.tar.gz"
 url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/663978808"
 
 [tools.pi."platforms.linux-x64-baseline"]
 checksum = "sha256:f2e4e4329603223d03260cdb8bd5033dbdc1f73ba58ab8939db2e56546e115d2"
-checksum_source = "mise-versions"
 url = "https://github.com/earendil-works/pi/releases/download/v1.4.0/pi-linux-x64.tar.gz"
 url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/663978808"
 
 [tools.pi."platforms.linux-x64-musl"]
 checksum = "sha256:f2e4e4329603223d03260cdb8bd5033dbdc1f73ba58ab8939db2e56546e115d2"
-checksum_source = "mise-versions"
 url = "https://github.com/earendil-works/pi/releases/download/v1.4.0/pi-linux-x64.tar.gz"
 url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/663978808"
 
 [tools.pi."platforms.linux-x64-musl-baseline"]
 checksum = "sha256:f2e4e4329603223d03260cdb8bd5033dbdc1f73ba58ab8939db2e56546e115d2"
-checksum_source = "mise-versions"
 url = "https://github.com/earendil-works/pi/releases/download/v1.4.0/pi-linux-x64.tar.gz"
 url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/663978808"
 
 [tools.pi."platforms.macos-arm64"]
 checksum = "sha256:79d9979d76a2a5adb7c28e27e9b44629928ccd0dc9fbb6ae7217860bd5e8be5d"
-checksum_source = "mise-versions"
 url = "https://github.com/earendil-works/pi/releases/download/v1.4.0/pi-darwin-arm64.tar.gz"
 url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/663978807"
 
 [tools.pi."platforms.macos-x64"]
 checksum = "sha256:1bdefc9e1074c1de458ea9f2e43e6013ce49cd05326009b3de144037036585e2"
-checksum_source = "mise-versions"
 url = "https://github.com/earendil-works/pi/releases/download/v1.4.0/pi-darwin-x64.tar.gz"
 url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/663978812"
 
 [tools.pi."platforms.macos-x64-baseline"]
 checksum = "sha256:1bdefc9e1074c1de458ea9f2e43e6013ce49cd05326009b3de144037036585e2"
-checksum_source = "mise-versions"
 url = "https://github.com/earendil-works/pi/releases/download/v1.4.0/pi-darwin-x64.tar.gz"
 url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/663978812"
 
 [tools.pi."platforms.windows-x64"]
 checksum = "sha256:0f7256ea8bdac3af20012b94fdc1252a31cc6dc0d2f9b9eb539555d22e3e321b"
-checksum_source = "mise-versions"
 url = "https://github.com/earendil-works/pi/releases/download/v1.4.0/pi-windows-x64.zip"
 url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/663978871"
 
 [tools.pi."platforms.windows-x64-baseline"]
 checksum = "sha256:0f7256ea8bdac3af20012b94fdc1252a31cc6dc0d2f9b9eb539555d22e3e321b"
-checksum_source = "mise-versions"
 url = "https://github.com/earendil-works/pi/releases/download/v1.4.0/pi-windows-x64.zip"
 url_api = "https://api.github.com/repos/earendil-works/pi/releases/assets/663978871"
 
