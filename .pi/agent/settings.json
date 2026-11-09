@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "1.4.0",
   "defaultProvider": "litellm",
-  "defaultModel": "phala/deepseek/deepseek-v4.1-flash-1017",
+  "defaultModel": "openrouter/deepseek/deepseek-v4.1-flash-1017",
   "defaultThinkingLevel": "medium",
   "theme": "catppuccin-macchiato",
   "compaction": {
