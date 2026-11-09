@@ -7,7 +7,7 @@
 import type {
   ExtensionAPI,
   ExtensionContext,
-} from "@mariozechner/pi-coding-agent";
+} from "@earendil-works/pi-coding-agent";
 
 export default function (pi: ExtensionAPI) {
   const EXT_ID = "tps";

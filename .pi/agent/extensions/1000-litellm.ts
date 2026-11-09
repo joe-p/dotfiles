@@ -1,4 +1,4 @@
-import type { ExtensionAPI } from "@mariozechner/pi-coding-agent";
+import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { existsSync, readFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
@@ -699,6 +699,19 @@ function syncProviders(pi: ExtensionAPI): string[] {
 }
 
 export default function (pi: ExtensionAPI) {
+  // Tag every LiteLLM request with the current Pi session so proxy-side logs and
+  // spend tracking can group calls from one session.
+  pi.on("before_provider_headers", (event, ctx) => {
+    if (!ctx.model?.provider?.startsWith(PROVIDER_PREFIX)) {
+      return;
+    }
+
+    const sessionId = ctx.sessionManager.getSessionId();
+    if (sessionId) {
+      event.headers.session_id = sessionId;
+    }
+  });
+
   // Register discovery before Pi selects the startup model or lists models.
   syncProviders(pi);
 

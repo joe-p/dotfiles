@@ -8,11 +8,11 @@
   "license": "ISC",
   "packageManager": "pnpm@10.22.0",
   "dependencies": {
-    "@mariozechner/pi-coding-agent": "^0.69.0",
     "pi-openai-usage": "0.1.4",
     "pi-web-access": "0.45.0"
   },
   "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^1.4.0",
     "@types/node": "^20.19.39",
     "prettier": "^3.8.3",
     "typescript": "^5.9.3"
