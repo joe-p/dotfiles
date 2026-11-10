@@ -2,24 +2,18 @@
   "model": "openrouter/deepseek/deepseek-v4.1-flash-1017",
   "lsp": true,
   "$schema": "https://opencode.ai/config.json",
-  "permission": {
-    "*": "allow"
-  },
-  "provider": {
-    "openrouter": {
-      "models": {
-        "deepseek/deepseek-v4.1-flash-1017": {
-          "name": "DS v4.1 Flash 1017 (wafer, together, inference.net)",
-          "options": {
-            "provider": {
-              "order": ["wafer/mxfp4", "together", "inference-net/fp8"],
-              "allow_fallbacks": false,
-              "data_collection": "deny",
-              "zdr": true
-            }
-          }
-        }
+  "plugins": [
+    {
+      "package": "/home/joe.guest/.config/opencode/litellm",
+      "options": {
+        "baseURL": "http://100.101.224.41:4000",
+        "apiKey": "{file:auth.txt}",
+        "providerName": "LiteLLM",
+        "refreshMinutes": 5
       }
     }
+  ],
+  "permission": {
+    "*": "allow"
   }
 }
