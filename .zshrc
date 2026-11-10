@@ -1,5 +1,7 @@
 autoload -Uz compinit && compinit
 
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
+
 ####################
 # OS
 ####################
@@ -22,6 +24,11 @@ fi
 
 export BUN_AGENT_RULE_DISABLED=1
 export CLAUDE_CODE_AGENT_RULE_DISABLED=1
+
+unset ANTHROPIC_AUTH_TOKEN ANTHROPIC_API_KEY ANTHROPIC_MODEL
+export ANTHROPIC_BASE_URL="http://100.101.224.41:4000"
+# ANTHROPIC_CUSTOM_HEADERS should be in .zshrc.local
+# export ANTHROPIC_CUSTOM_HEADERS="x-litellm-api-key: Bearer <KEY>" 
 
 ####################
 # PATH modifications
@@ -149,3 +156,8 @@ zstyle :prompt:pure:git:stash show yes
 prompt pure
 
 source <(fzf --zsh)
+# Lima BEGIN
+# Make sure iptables and mount.fuse3 are available
+PATH="$PATH:/usr/sbin:/sbin"
+export PATH
+# Lima END
