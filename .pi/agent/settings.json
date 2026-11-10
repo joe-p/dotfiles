@@ -1,6 +1,6 @@
 {
   "lastChangelogVersion": "1.4.0",
-  "defaultProvider": "litellm",
+  "defaultProvider": "model-proxy",
   "defaultModel": "openrouter/deepseek/deepseek-v4.1-flash-1017",
   "defaultThinkingLevel": "high",
   "theme": "catppuccin-macchiato",
