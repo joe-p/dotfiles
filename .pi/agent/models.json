@@ -1,7 +1,7 @@
 {
   "providers": {
     "model-proxy": {
-      "baseUrl": "http://localhost:8080/v1",
+      "baseUrl": "http://100.101.224.41:8080/v1",
       "api": "openai-completions",
       "authHeader": true,
       "dynamicModels": true
