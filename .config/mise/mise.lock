@@ -5599,6 +5599,9 @@ url_api = "https://api.github.com/repos/google-antigravity/antigravity-cli/relea
 version = "26.02"
 backend = "aqua:ip7z/7zip"
 
+[tools."aqua:ip7z/7zip".options]
+"vars.lazy" = "true"
+
 [tools."aqua:ip7z/7zip"."platforms.linux-arm64"]
 checksum = "sha256:70ea6cc737ae1495ea2d7eb20ef3120fe579bd3f1a83a9d2362b62ec5bde2bba"
 url = "https://github.com/ip7z/7zip/releases/download/26.02/7z2602-linux-arm64.tar.xz"
@@ -5686,6 +5689,9 @@ url_api = "https://api.github.com/repos/smol-machines/smolvm/releases/assets/684
 [[tools.bat]]
 version = "0.26.1"
 backend = "aqua:sharkdp/bat"
+
+[tools.bat.options]
+"vars.lazy" = "true"
 
 [tools.bat."platforms.linux-arm64"]
 checksum = "sha256:6369242c584065f195fb20cb36fbd7cb63ae690605bbe89868a7596b596c2c23"
@@ -5793,6 +5799,9 @@ url = "https://github.com/oven-sh/bun/releases/download/bun-v1.4.2/bun-windows-x
 [[tools.cargo-binstall]]
 version = "1.19.1"
 backend = "aqua:cargo-bins/cargo-binstall"
+
+[tools.cargo-binstall.options]
+"vars.lazy" = "true"
 
 [tools.cargo-binstall."platforms.linux-arm64"]
 checksum = "sha256:2001eee8da26705ad9627e57a25c23eb4639647521205f3e4a7b4e09d067d199"
@@ -6433,6 +6442,9 @@ conda_deps = [
 version = "2.1.321"
 backend = "aqua:anthropics/claude-code"
 
+[tools.claude.options]
+"vars.lazy" = "true"
+
 [tools.claude."platforms.linux-arm64"]
 checksum = "blake3:9cee6a5b47eef2d3870c4a149e409b009baa1a22ded253e46be87a8c95d1e072"
 url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d59b1c096819/claude-code-releases/2.1.321/linux-arm64/claude"
@@ -6464,6 +6476,9 @@ url = "https://storage.googleapis.com/claude-code-dist-86c565f3-f756-42ad-8dfa-d
 [[tools.cmake]]
 version = "4.3.2"
 backend = "aqua:Kitware/CMake"
+
+[tools.cmake.options]
+"vars.lazy" = "true"
 
 [tools.cmake."platforms.linux-arm64"]
 checksum = "sha256:377079ab739f5765176f427609d9a2015b756ea20d5cba908d279c3731a2f481"
@@ -6583,6 +6598,9 @@ url_api = "https://api.github.com/repos/openai/codex/releases/assets/645224538"
 version = "0.69.0"
 backend = "aqua:Wilfred/difftastic"
 
+[tools.difftastic.options]
+"vars.lazy" = "true"
+
 [tools.difftastic."platforms.linux-arm64"]
 checksum = "sha256:abd2f42d2afd424312b4862aa7c7bb0320447670ae22fabcc5159db03e2dccbd"
 url = "https://github.com/Wilfred/difftastic/releases/download/0.69.0/difft-aarch64-unknown-linux-gnu.tar.gz"
@@ -6641,6 +6659,9 @@ url_api = "https://api.github.com/repos/Wilfred/difftastic/releases/assets/40936
 [[tools.fd]]
 version = "10.4.2"
 backend = "aqua:sharkdp/fd"
+
+[tools.fd.options]
+"vars.lazy" = "true"
 
 [tools.fd."platforms.linux-arm64"]
 checksum = "sha256:f32d3657473fba74e2600babc8db0b93420d51169223b7e8143b2ed55d8fd9e8"
@@ -7965,6 +7986,9 @@ conda_deps = [
 version = "0.72.0"
 backend = "aqua:junegunn/fzf"
 
+[tools.fzf.options]
+"vars.lazy" = "true"
+
 [tools.fzf."platforms.linux-arm64"]
 checksum = "sha256:a0a5b50730f568c5f08b8dbba1e6e598db253e1856d371290086786b889b996b"
 url = "https://github.com/junegunn/fzf/releases/download/v0.72.0/fzf-0.72.0-linux_arm64.tar.gz"
@@ -8023,6 +8047,9 @@ url_api = "https://api.github.com/repos/junegunn/fzf/releases/assets/405825807"
 [[tools.gh]]
 version = "2.97.0"
 backend = "aqua:cli/cli"
+
+[tools.gh.options]
+"vars.lazy" = "true"
 
 [tools.gh."platforms.linux-arm64"]
 checksum = "sha256:73ea440ecad9c9e284429997ee6f93577bc6f7bc6fba357ef62c53ad8fb641a5"
@@ -8153,6 +8180,9 @@ url_api = "https://api.github.com/repos/can1357/oh-my-pi/releases/assets/4222545
 version = "8.30.1"
 backend = "aqua:gitleaks/gitleaks"
 
+[tools.gitleaks.options]
+"vars.lazy" = "true"
+
 [tools.gitleaks."platforms.linux-arm64"]
 checksum = "sha256:e4a487ee7ccd7d3a7f7ec08657610aa3606637dab924210b3aee62570fb4b080"
 url = "https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_arm64.tar.gz"
@@ -8268,6 +8298,9 @@ backend = "go:golang.org/x/tools/gopls"
 version = "2.1.0"
 backend = "aqua:Automattic/harper/harper-ls"
 
+[tools.harper-ls.options]
+"vars.lazy" = "true"
+
 [tools.harper-ls."platforms.linux-arm64"]
 checksum = "sha256:96716079b837a8cf901669118985200fe68950239352f9e1ad9549f71547ae78"
 url = "https://github.com/Automattic/harper/releases/download/v2.1.0/harper-ls-aarch64-unknown-linux-gnu.tar.gz"
@@ -8327,6 +8360,9 @@ url_api = "https://api.github.com/repos/Automattic/harper/releases/assets/404808
 version = "1.20.0"
 backend = "aqua:sharkdp/hyperfine"
 
+[tools.hyperfine.options]
+"vars.lazy" = "true"
+
 [tools.hyperfine."platforms.linux-arm64"]
 checksum = "sha256:90875cb1db7a1d797c311174d061728361e58fc70e3b62262a00635ac3b1997c"
 url = "https://github.com/sharkdp/hyperfine/releases/download/v1.20.0/hyperfine-v1.20.0-aarch64-unknown-linux-gnu.tar.gz"
@@ -8385,6 +8421,9 @@ url_api = "https://api.github.com/repos/sharkdp/hyperfine/releases/assets/317832
 [[tools.jq]]
 version = "1.8.1"
 backend = "aqua:jqlang/jq"
+
+[tools.jq.options]
+"vars.lazy" = "true"
 
 [tools.jq."platforms.linux-arm64"]
 checksum = "sha256:6bc62f25981328edd3cfcfe6fe51b073f2d7e7710d7ef7fcdac28d4e384fc3d4"
@@ -8456,6 +8495,9 @@ provenance = "github-attestations"
 version = "0.25.2"
 backend = "aqua:jesseduffield/lazydocker"
 
+[tools.lazydocker.options]
+"vars.lazy" = "true"
+
 [tools.lazydocker."platforms.linux-arm64"]
 checksum = "sha256:005c38b685aaa557e7d646d83a3dadb5024340eeed8c6a2e1949eee6f530de23"
 url = "https://github.com/jesseduffield/lazydocker/releases/download/v0.25.2/lazydocker_0.25.2_Linux_arm64.tar.gz"
@@ -8515,6 +8557,9 @@ url_api = "https://api.github.com/repos/jesseduffield/lazydocker/releases/assets
 version = "0.64.1"
 backend = "aqua:jesseduffield/lazygit"
 
+[tools.lazygit.options]
+"vars.lazy" = "true"
+
 [tools.lazygit."platforms.linux-arm64"]
 checksum = "sha256:8b7ca3b344e60340ad1f89f29b9868ee39bcaba5bb92ee818bbe65476bb8b6e7"
 url = "https://github.com/jesseduffield/lazygit/releases/download/v0.64.1/lazygit_0.64.1_linux_arm64.tar.gz"
@@ -8573,6 +8618,9 @@ url_api = "https://api.github.com/repos/jesseduffield/lazygit/releases/assets/51
 [[tools.lua-language-server]]
 version = "3.18.2"
 backend = "aqua:LuaLS/lua-language-server"
+
+[tools.lua-language-server.options]
+"vars.lazy" = "true"
 
 [tools.lua-language-server."platforms.linux-arm64"]
 checksum = "sha256:273af33f26f4a1143f27c96d9f9e1188aba619c71e0807042134f66b4bd27f24"
@@ -8752,6 +8800,9 @@ allow_builds = '["@opencode/cli"]'
 version = "1.5.0"
 backend = "aqua:earendil-works/pi"
 
+[tools.pi.options]
+"vars.lazy" = "true"
+
 [tools.pi."platforms.linux-arm64"]
 checksum = "sha256:5d5711b48600756473682e86360b026b11abf7591e5d112eb411d4da2c100d9a"
 url = "https://github.com/earendil-works/pi/releases/download/v1.5.0/pi-linux-arm64.tar.gz"
@@ -8835,6 +8886,9 @@ backend = "pipx:yq"
 version = "11.0.6"
 backend = "aqua:pnpm/pnpm"
 
+[tools.pnpm.options]
+"vars.lazy" = "true"
+
 [tools.pnpm."platforms.linux-arm64"]
 checksum = "sha256:8cff0a79557ffabcd9b25d40e70d9d859a160f05b5405b483142237460ea850d"
 url = "https://github.com/pnpm/pnpm/releases/download/v11.0.6/pnpm-linux-arm64.tar.gz"
@@ -8896,6 +8950,9 @@ backend = "npm:prettier"
 [[tools.protoc]]
 version = "35.1"
 backend = "aqua:protocolbuffers/protobuf/protoc"
+
+[tools.protoc.options]
+"vars.lazy" = "true"
 
 [tools.protoc."platforms.linux-arm64"]
 checksum = "sha256:01bf9d08808c7f96678b63f4bd8efa559bb4f83d5a7a270d5edaf507f9d5d9cf"
@@ -9010,6 +9067,9 @@ provenance = "github-attestations"
 version = "15.1.0"
 backend = "aqua:BurntSushi/ripgrep"
 
+[tools.ripgrep.options]
+"vars.lazy" = "true"
+
 [tools.ripgrep."platforms.linux-arm64"]
 checksum = "sha256:2b661c6ef508e902f388e9098d9c4c5aca72c87b55922d94abdba830b4dc885e"
 url = "https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-aarch64-unknown-linux-gnu.tar.gz"
@@ -9073,6 +9133,9 @@ backend = "core:rust"
 version = "1.1.0"
 backend = "aqua:chmln/sd"
 
+[tools.sd.options]
+"vars.lazy" = "true"
+
 [tools.sd."platforms.linux-arm64"]
 checksum = "sha256:ec8c93c0533ff21f4851d11566808d4082544baf063d9b96ea77c27e98b7cd99"
 url = "https://github.com/chmln/sd/releases/download/v1.1.0/sd-v1.1.0-aarch64-unknown-linux-musl.tar.gz"
@@ -9131,6 +9194,9 @@ url_api = "https://api.github.com/repos/chmln/sd/releases/assets/362325573"
 [[tools.stylua]]
 version = "2.4.1"
 backend = "aqua:JohnnyMorganz/StyLua"
+
+[tools.stylua.options]
+"vars.lazy" = "true"
 
 [tools.stylua."platforms.linux-arm64"]
 checksum = "sha256:ce8363cf77fb88f31e5cd8fe4cd8a61ff63ac0483bc5e38a1e24c5a894f04035"
@@ -9194,6 +9260,9 @@ backend = "cargo:tokei"
 [[tools.tree-sitter]]
 version = "0.26.8"
 backend = "aqua:tree-sitter/tree-sitter"
+
+[tools.tree-sitter.options]
+"vars.lazy" = "true"
 
 [tools.tree-sitter."platforms.linux-arm64"]
 checksum = "sha256:e339d6533b20830dd1666fe320aff85d301b3f59964a3836870b77f4827f9a17"
@@ -9264,6 +9333,9 @@ provenance = "github-attestations"
 [[tools.uv]]
 version = "0.11.13"
 backend = "aqua:astral-sh/uv"
+
+[tools.uv.options]
+"vars.lazy" = "true"
 
 [tools.uv."platforms.linux-arm64"]
 checksum = "sha256:bea8a97b1b3ed41491e075c1f474e7f0249582aa3f62849c4e874b5f34ddc95e"
@@ -9383,6 +9455,9 @@ url = "https://ziglang.org/download/0.16.0/zig-x86_64-windows-0.16.0.zip"
 [[tools.zls]]
 version = "0.16.0"
 backend = "aqua:zigtools/zls"
+
+[tools.zls.options]
+"vars.lazy" = "true"
 
 [tools.zls."platforms.linux-arm64"]
 checksum = "sha256:430cd293d201eb70ae2519dbc96c854bf8791b8df7fc9392e8d2dc9680a2bed7"

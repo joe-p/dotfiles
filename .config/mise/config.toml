@@ -1,57 +1,50 @@
 [tools]
-cargo-binstall = "latest"
-node = "24"
-python = "latest"
-fzf = "latest"
-lazygit = "latest"
-lazydocker = "latest"
-sd = "latest"
-fd = "latest"
-pnpm = "latest"
-go = "latest"
-rust = "latest"
-lua-language-server = "latest"
-zig = "latest"
-zls = "latest"
-neovim = "latest"
-clang = "latest"
-ripgrep = "latest"
-difftastic = "latest"
-tree-sitter = "latest"
-harper-ls = "latest"
-stylua = "latest"
-clang-format = "latest"
-uv = "latest"
-gitleaks = "latest"
-hyperfine = "latest"
-cmake = "latest"
-"pipx:yq" = "latest"
-"pipx:algokit" = "latest"
-"pipx:mypy" = "latest"
-"pipx:poetry" = "latest"
-"pipx:neovim-remote" = "latest"
-"pipx:mdformat" = "latest"
-"npm:@vtsls/language-server" = "latest"
-jq = "latest"
-bat = "latest"
-ffmpeg = "latest"
-"aqua:ip7z/7zip" = "latest"
-"go:golang.org/x/tools/gopls" = "latest"
-bun = "latest"
-tokei = "latest"
-protoc = "latest"
-codex = "latest"
-"cargo:typos-lsp" = "latest"
-antigravity-cli = "latest"
-claude = "latest"
-"go:github.com/boyter/scc/v4" = "latest"
-gh = "latest"
-markdownlint-cli2 = "latest"
-"npm:@earendil-works/pi-coding-agent" = "latest"
-prettier = "latest"
-opencode = { version = "latest", allow_builds = ["@opencode/cli"] }
-"npm:skills" = "latest"
-pi = "latest"
+cargo-binstall = { version = "latest", lazy = true }
+node = { version = "24", lazy = true }
+python = { version = "latest", lazy = true }
+fzf = { version = "latest", lazy = true }
+lazygit = { version = "latest", lazy = true }
+lazydocker = { version = "latest", lazy = true }
+sd = { version = "latest", lazy = true }
+fd = { version = "latest", lazy = true }
+pnpm = { version = "latest", lazy = true }
+go = { version = "latest", lazy = true }
+rust = { version = "latest", lazy = true }
+lua-language-server = { version = "latest", lazy = true }
+zig = { version = "latest", lazy = true }
+zls = { version = "latest", lazy = true }
+neovim = { version = "latest", lazy = true }
+clang = { version = "latest", lazy = true }
+ripgrep = { version = "latest", lazy = true }
+difftastic = { version = "latest", lazy = true }
+tree-sitter = { version = "latest", lazy = true }
+harper-ls = { version = "latest", lazy = true }
+stylua = { version = "latest", lazy = true }
+clang-format = { version = "latest", lazy = true }
+uv = { version = "latest", lazy = true }
+gitleaks = { version = "latest", lazy = true }
+hyperfine = { version = "latest", lazy = true }
+cmake = { version = "latest", lazy = true }
+"pipx:neovim-remote" = { version = "latest", lazy = true }
+"pipx:mdformat" = { version = "latest", lazy = true }
+"npm:@vtsls/language-server" = { version = "latest", lazy = true }
+jq = { version = "latest", lazy = true }
+bat = { version = "latest", lazy = true }
+ffmpeg = { version = "latest", lazy = true }
+"aqua:ip7z/7zip" = { version = "latest", lazy = true }
+"go:golang.org/x/tools/gopls" = { version = "latest", lazy = true }
+bun = { version = "latest", lazy = true }
+tokei = { version = "latest", lazy = true }
+protoc = { version = "latest", lazy = true }
+"cargo:typos-lsp" = { version = "latest", lazy = true }
+claude = { version = "latest", lazy = true }
+"go:github.com/boyter/scc/v4" = { version = "latest", lazy = true }
+gh = { version = "latest", lazy = true }
+markdownlint-cli2 = { version = "latest", lazy = true }
+prettier = { version = "latest", lazy = true }
+opencode = { version = "latest", allow_builds = ["@opencode/cli"], lazy = true }
+"npm:skills" = { version = "latest", lazy = true }
+pi = { version = "latest", lazy = true }
 
 [settings]
 lockfile = true
