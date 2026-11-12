@@ -26,9 +26,9 @@ export BUN_AGENT_RULE_DISABLED=1
 export CLAUDE_CODE_AGENT_RULE_DISABLED=1
 
 unset ANTHROPIC_AUTH_TOKEN ANTHROPIC_API_KEY ANTHROPIC_MODEL
-export ANTHROPIC_BASE_URL="http://100.101.224.41:4000"
+export ANTHROPIC_BASE_URL="http://100.101.224.41:8080/claude_sub/"
 # ANTHROPIC_CUSTOM_HEADERS should be in .zshrc.local
-# export ANTHROPIC_CUSTOM_HEADERS="x-litellm-api-key: Bearer <KEY>" 
+# export ANTHROPIC_CUSTOM_HEADERS="x-model-proxy-key: Bearer <KEY>" 
 
 ####################
 # PATH modifications
