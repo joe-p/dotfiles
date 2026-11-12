@@ -1,9 +1,12 @@
-vim.pack.add({
+vim.pack.add {
   { src = 'https://github.com/MunifTanjim/nui.nvim' },
-  { src = 'https://github.com/esmuellert/codediff.nvim' }
-})
+  { src = 'https://github.com/esmuellert/codediff.nvim' },
+}
 
-require('codediff').setup({
+require('codediff').setup {
+  diff = {
+    layout = 'inline', -- "side-by-side" (default) or "inline"
+  },
   explorer = {
     view_mode = 'tree',
   },
@@ -13,4 +16,4 @@ require('codediff').setup({
       prev_hunk = '[g',
     },
   },
-})
+}
