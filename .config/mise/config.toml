@@ -1,9 +1,13 @@
 [tools]
+python = "latest"
+fzf = "latest"
+neovim = "latest"
+uv = "latest"
+"pipx:neovim-remote" = "latest"
+
 cargo-binstall = { version = "latest", lazy = true }
 node = { version = "24", lazy = true }
-python = { version = "latest", lazy = true }
-fzf = { version = "latest", lazy = true }
-lazygit = { version = "latest", lazy = true }
+lazygit = { version = "latest", lazy = false }
 lazydocker = { version = "latest", lazy = true }
 sd = { version = "latest", lazy = true }
 fd = { version = "latest", lazy = true }
@@ -13,37 +17,33 @@ rust = { version = "latest", lazy = true }
 lua-language-server = { version = "latest", lazy = true }
 zig = { version = "latest", lazy = true }
 zls = { version = "latest", lazy = true }
-neovim = { version = "latest", lazy = true }
 clang = { version = "latest", lazy = true }
 ripgrep = { version = "latest", lazy = true }
 difftastic = { version = "latest", lazy = true }
 tree-sitter = { version = "latest", lazy = true }
 harper-ls = { version = "latest", lazy = true }
 stylua = { version = "latest", lazy = true }
-clang-format = { version = "latest", lazy = true }
-uv = { version = "latest", lazy = true }
+clang-format = { version = "latest", lazy = true, lazy_bins = ["clang-format"] }
 gitleaks = { version = "latest", lazy = true }
 hyperfine = { version = "latest", lazy = true }
 cmake = { version = "latest", lazy = true }
-"pipx:neovim-remote" = { version = "latest", lazy = true }
-"pipx:mdformat" = { version = "latest", lazy = true }
-"npm:@vtsls/language-server" = { version = "latest", lazy = true }
+"npm:@vtsls/language-server" = { version = "latest", lazy = true, lazy_bins = ["vtsls"] }
 jq = { version = "latest", lazy = true }
 bat = { version = "latest", lazy = true }
 ffmpeg = { version = "latest", lazy = true }
-"aqua:ip7z/7zip" = { version = "latest", lazy = true }
-"go:golang.org/x/tools/gopls" = { version = "latest", lazy = true }
+"7z" = { version = "latest", lazy = true }
+"go:golang.org/x/tools/gopls" = { version = "latest", lazy = true, lazy_bins = ["gopls"] }
 bun = { version = "latest", lazy = true }
-tokei = { version = "latest", lazy = true }
+tokei = { version = "latest", lazy = true, lazy_bins=["tokei"] }
 protoc = { version = "latest", lazy = true }
-"cargo:typos-lsp" = { version = "latest", lazy = true }
+"cargo:typos-lsp" = { version = "latest", lazy = true, lazy_bins = ["typos-lsp"] }
 claude = { version = "latest", lazy = true }
-"go:github.com/boyter/scc/v4" = { version = "latest", lazy = true }
+"go:github.com/boyter/scc/v4" = { version = "latest", lazy = true, lazy_bins = ["scc"] }
 gh = { version = "latest", lazy = true }
 markdownlint-cli2 = { version = "latest", lazy = true }
 prettier = { version = "latest", lazy = true }
 opencode = { version = "latest", allow_builds = ["@opencode/cli"], lazy = true }
-"npm:skills" = { version = "latest", lazy = true }
+"npm:skills" = { version = "latest", lazy = true, lazy_bins = "skills" }
 pi = { version = "latest", lazy = true }
 
 [settings]
