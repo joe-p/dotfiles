@@ -17,7 +17,7 @@ rust = { version = "latest", lazy = true }
 lua-language-server = { version = "latest", lazy = true }
 zig = { version = "latest", lazy = true }
 zls = { version = "latest", lazy = true }
-clang = { version = "latest", lazy = true }
+clang = { version = "latest", lazy = true, lazy_bins = ["clang", "clang-cl", "clang-cpp"] }
 ripgrep = { version = "latest", lazy = true }
 difftastic = { version = "latest", lazy = true }
 tree-sitter = { version = "latest", lazy = true }
