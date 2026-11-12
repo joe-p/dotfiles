@@ -43,8 +43,9 @@ gh = { version = "latest", lazy = true }
 markdownlint-cli2 = { version = "latest", lazy = true }
 prettier = { version = "latest", lazy = true }
 opencode = { version = "latest", allow_builds = ["@opencode/cli"], lazy = true }
-"npm:skills" = { version = "latest", lazy = true, lazy_bins = "skills" }
+"npm:skills" = { version = "latest", lazy = true, lazy_bins = ["skills"] }
 pi = { version = "latest", lazy = true }
+"cargo:circom-lsp" = { version = "0.1.3", lazy = true, lazy_bins = ["circom-lsp"] }
 
 [settings]
 lockfile = true
