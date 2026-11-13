@@ -42,6 +42,9 @@
 !.setup/
 !.setup/*
 
+!.agents/
+!.agents/**
+
 # Generated files and secrets
 **/node_modules/
 **/auth.json
