@@ -1,5 +1,5 @@
 /**
- * Questionnaire extension
+ * Ask User Questions extension (tool name: ask_user_questions)
  *
  * Lets the agent ask one or more multiple-choice questions with:
  * - a recommended option (marked with ★ and preselected)
@@ -68,7 +68,7 @@ const QuestionSchema = Type.Object({
 	allowSkip: Type.Optional(Type.Boolean({ description: "Offer a 'Skip' option (default: true)" })),
 });
 
-const QuestionnaireParams = Type.Object({
+const AskUserQuestionsParams = Type.Object({
 	questions: Type.Array(QuestionSchema, { description: "Questions to ask, in order", minItems: 1 }),
 });
 
@@ -103,7 +103,7 @@ interface Answer {
 	timedOut?: boolean;
 }
 
-interface QuestionnaireDetails {
+interface AskUserQuestionsDetails {
 	questions: { id: string; header: string; question: string }[];
 	answers: Answer[];
 	cancelled: boolean;
@@ -123,7 +123,7 @@ interface DisplayOption {
 	optionIndex?: number;
 }
 
-function errorResult(message: string): { content: { type: "text"; text: string }[]; details: QuestionnaireDetails } {
+function errorResult(message: string): { content: { type: "text"; text: string }[]; details: AskUserQuestionsDetails } {
 	return {
 		content: [{ type: "text", text: message }],
 		details: { questions: [], answers: [], cancelled: true, timeoutSeconds: 0 },
@@ -134,7 +134,7 @@ function errorResult(message: string): { content: { type: "text"; text: string }
 // Extension
 // ---------------------------------------------------------------------------
 
-export default function questionnaire(pi: ExtensionAPI) {
+export default function askUserQuestions(pi: ExtensionAPI) {
 	// User opt-in only, kept in memory and never persisted. Every new session
 	// starts with timeouts disabled.
 	let sessionTimeoutSeconds = 0;
@@ -143,7 +143,7 @@ export default function questionnaire(pi: ExtensionAPI) {
 	});
 
 	pi.registerCommand("qa-timeout", {
-		description: "Set the questionnaire per-question timeout (seconds, or 'off'; omit to edit interactively)",
+		description: "Set the ask_user_questions per-question timeout (seconds, or 'off'; omit to edit interactively)",
 		getArgumentCompletions: (prefix: string) => {
 			const items = [
 				{ value: "off", label: "off", description: "Disable the auto-select timeout" },
@@ -166,14 +166,14 @@ export default function questionnaire(pi: ExtensionAPI) {
 				// autocomplete list (which submits immediately) still does something visible.
 				if (ctx.mode !== "tui") {
 					ctx.ui.notify(
-						`Questionnaire timeout: ${description}. Usage: /qa-timeout <seconds|off>`,
+						`ask_user_questions timeout: ${description}. Usage: /qa-timeout <seconds|off>`,
 						"info",
 					);
 					return;
 				}
 
 				const answer = await ctx.ui.input(
-					`Questionnaire timeout (currently ${description})`,
+					`ask_user_questions timeout (currently ${description})`,
 					"seconds or 'off'",
 				);
 				if (answer === undefined) return;
@@ -183,7 +183,7 @@ export default function questionnaire(pi: ExtensionAPI) {
 
 			if (raw === "off" || raw === "none" || raw === "disabled") {
 				sessionTimeoutSeconds = 0;
-				ctx.ui.notify("Questionnaire timeout disabled for this session.", "info");
+				ctx.ui.notify("ask_user_questions timeout disabled for this session.", "info");
 				return;
 			}
 
@@ -200,31 +200,31 @@ export default function questionnaire(pi: ExtensionAPI) {
 			sessionTimeoutSeconds = seconds;
 			ctx.ui.notify(
 				seconds > 0
-					? `Questionnaire timeout: ${formatSeconds(seconds)}s per question for this session.`
-					: "Questionnaire timeout disabled for this session.",
+					? `ask_user_questions timeout: ${formatSeconds(seconds)}s per question for this session.`
+					: "ask_user_questions timeout disabled for this session.",
 				"info",
 			);
 		},
 	});
 
 	pi.registerTool({
-		name: "questionnaire",
-		label: "Questionnaire",
+		name: "ask_user_questions",
+		label: "Ask User Questions",
 		description:
 			"Ask the user one or more multiple-choice questions. Each question has options, one of which should be marked recommended. The user can pick an option, type a custom answer, or skip. If the user has enabled a per-question timeout with /qa-timeout, the recommended option is auto-selected when it expires; by default there is no timeout and the tool waits for the user. Use when you need a decision or preference from the user.",
 		promptSnippet:
 			"Ask the user multiple-choice questions with a recommended option, custom answer, skip, and an optional user-configured timeout.",
 		promptGuidelines: [
-			"Use questionnaire when you need the user to choose between concrete options.",
+			"Use ask_user_questions when you need the user to choose between concrete options.",
 			"Mark exactly one option per question as recommended, unless no option is genuinely better.",
 			"Keep question option labels short; put details in descriptions.",
 		],
-		parameters: QuestionnaireParams,
+		parameters: AskUserQuestionsParams,
 		executionMode: "sequential",
 
 		async execute(_toolCallId, params, signal, _onUpdate, ctx) {
 			if (ctx.mode !== "tui") {
-				return errorResult("Error: questionnaire requires an interactive TUI session.");
+				return errorResult("Error: ask_user_questions requires an interactive TUI session.");
 			}
 			if (params.questions.length === 0) {
 				return errorResult("Error: No questions provided.");
@@ -259,7 +259,7 @@ export default function questionnaire(pi: ExtensionAPI) {
 				question: q.question,
 			}));
 
-			const buildDetails = (answers: Answer[], cancelled: boolean): QuestionnaireDetails => ({
+			const buildDetails = (answers: Answer[], cancelled: boolean): AskUserQuestionsDetails => ({
 				questions: publicQuestions,
 				answers,
 				cancelled,
@@ -268,14 +268,14 @@ export default function questionnaire(pi: ExtensionAPI) {
 
 			if (signal?.aborted) {
 				return {
-					content: [{ type: "text", text: "Questionnaire cancelled before it was shown." }],
+					content: [{ type: "text", text: "Questions cancelled before they were shown." }],
 					details: buildDetails([], true),
 				};
 			}
 
 			const uiOptions = {
 				overlay: false,
-				blocked: { kind: "question" as const, message: publicQuestions[0]?.question ?? "Questionnaire" },
+				blocked: { kind: "question" as const, message: publicQuestions[0]?.question ?? "Questions" },
 			};
 
 			const result = await ctx.ui.custom<ComponentResult>(
@@ -667,8 +667,8 @@ export default function questionnaire(pi: ExtensionAPI) {
 				const lines = describeAnswers(result.answers, timeoutSeconds);
 				const summary =
 					answered > 0
-						? `User cancelled the questionnaire after answering ${answered} of ${questions.length} questions.\n${lines}`
-						: "User cancelled the questionnaire before answering.";
+						? `User cancelled after answering ${answered} of ${questions.length} questions.\n${lines}`
+						: "User cancelled before answering.";
 				return {
 					content: [{ type: "text", text: summary }],
 					details,
@@ -686,7 +686,7 @@ export default function questionnaire(pi: ExtensionAPI) {
 			const headers = questionList
 				.map((q, i) => q.header?.trim() || q.id?.trim() || `Q${i + 1}`)
 				.join(", ");
-			let text = theme.fg("toolTitle", theme.bold("questionnaire "));
+			let text = theme.fg("toolTitle", theme.bold("ask_user_questions "));
 			text += theme.fg("muted", `${questionList.length} question${questionList.length === 1 ? "" : "s"}`);
 			if (headers) {
 				text += theme.fg("dim", ` (${headers})`);
@@ -695,7 +695,7 @@ export default function questionnaire(pi: ExtensionAPI) {
 		},
 
 		renderResult(result, _options, theme) {
-			const details = result.details as QuestionnaireDetails | undefined;
+			const details = result.details as AskUserQuestionsDetails | undefined;
 			if (!details) {
 				const first = result.content[0];
 				return new Text(first?.type === "text" ? first.text : "", 0, 0);
