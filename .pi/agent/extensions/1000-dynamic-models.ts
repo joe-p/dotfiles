@@ -281,6 +281,7 @@ function toModel(
   }
 
   const info = record(raw.model_info) ?? {};
+  const topProvider = record(raw.top_provider) ?? {};
   const contextWindow =
     numberValue(raw.context_length) ??
     numberValue(raw.max_input_tokens) ??
@@ -292,6 +293,7 @@ function toModel(
     numberValue(raw.max_output_tokens) ??
     numberValue(info.max_output_tokens) ??
     numberValue(info.max_completion_tokens) ??
+    numberValue(topProvider.max_completion_tokens) ??
     Math.min(DEFAULT_MAX_TOKENS, contextWindow);
 
   return {
@@ -365,6 +367,7 @@ function applyModelInfo(
     }
 
     const info = record(raw.model_info) ?? {};
+    const topProvider = record(raw.top_provider) ?? {};
     const contextWindow =
       numberValue(raw.max_input_tokens) ??
       numberValue(info.max_input_tokens) ??
@@ -374,6 +377,7 @@ function applyModelInfo(
       numberValue(raw.max_output_tokens) ??
       numberValue(info.max_output_tokens) ??
       numberValue(info.max_completion_tokens) ??
+      numberValue(topProvider.max_completion_tokens) ??
       model.maxTokens;
     const input =
       info.supports_vision === true && !model.input.includes("image")
