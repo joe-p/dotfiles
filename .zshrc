@@ -161,3 +161,4 @@ source <(fzf --zsh)
 PATH="$PATH:/usr/sbin:/sbin"
 export PATH
 # Lima END
+export PATH="/home/joe.guest/.bb:$PATH"
