@@ -71,6 +71,10 @@
       "src": "https://github.com/goerz/jupytext.nvim",
       "version": "'v0.2.0'"
     },
+    "kitehost.nvim": {
+      "rev": "4cb5c94a84cc653e0b32e0c9aed95465a36fc94d",
+      "src": "https://github.com/selimacerbas/kitehost.nvim"
+    },
     "lazydev.nvim": {
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
       "src": "https://github.com/folke/lazydev.nvim"
@@ -79,10 +83,6 @@
       "rev": "9ffc6103926718f7070fb4017694543cd7dc9718",
       "src": "https://github.com/kdheepak/lazygit.nvim"
     },
-    "live-preview.nvim": {
-      "rev": "dad92ae9599f9b19a7dffe7d597d3376c110b818",
-      "src": "https://github.com/brianhuster/live-preview.nvim"
-    },
     "llama.vim": {
       "rev": "e1ca1cc6af9da73f4ae21f810f33909d515592e6",
       "src": "https://github.com/ggml-org/llama.vim"
@@ -90,6 +90,10 @@
     "markview.nvim": {
       "rev": "aadb6d817577d553bbef61e8b9073f1bf4b87e08",
       "src": "https://github.com/OXY2DEV/markview.nvim"
+    },
+    "mdkite.nvim": {
+      "rev": "dded03dc6cce87364b48260b2ffbace575a6add7",
+      "src": "https://github.com/selimacerbas/mdkite.nvim"
     },
     "mini.statusline": {
       "rev": "b5547f44560dae3ccd81f914256fa6f705837022",
