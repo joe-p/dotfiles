@@ -110,6 +110,38 @@ dcdu() {
     docker compose down "$@" && docker compose up -d && docker compose logs -f "$@" 
 }
 
+sshtun() {
+    emulate -L zsh
+    setopt localoptions errreturn
+
+    if (( $# != 2 )); then
+        print -u2 "usage: sshtun <host> <port>"
+        return 2
+    fi
+
+    local host=$1 port=$2
+
+    # Reject anything that isn't a bare port number.
+    [[ $port == <-> ]] && (( port > 0 && port < 65536 )) || {
+        print -u2 "sshtun: invalid port: $port"
+        return 2
+    }
+
+    setopt xtrace
+
+    ssh -N \
+        -o ExitOnForwardFailure=yes \
+        -o ServerAliveInterval=15 \
+        -o ServerAliveCountMax=3 \
+        -o TCPKeepAlive=yes \
+        -o StrictHostKeyChecking=yes \
+        -o BatchMode=yes \
+        -o ControlMaster=no \
+        -o ControlPath=none \
+        -L "127.0.0.1:${port}:localhost:${port}" \
+        -- "$host"
+}
+
 ####################
 # Completions
 ####################
