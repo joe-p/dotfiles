@@ -6,7 +6,7 @@ set -eux
 # Install apt packages
 #########################
 sudo apt-get update
-sudo apt-get install -y zsh build-essential bubblewrap socat libc++-dev libc++abi-dev zlib1g-dev libzstd-dev
+sudo apt-get install -y zsh build-essential libc++-dev libc++abi-dev zlib1g-dev libzstd-dev pkg-config libssl-dev
 sudo chsh -s /bin/zsh $USER
 
 #########################
