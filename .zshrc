@@ -81,6 +81,7 @@ alias lzg='lazygit'
 alias lzd='lazydocker'
 alias pn='pnpm'
 alias lzdot='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dc='docker compose'
 
 ####################
 # Functions
@@ -103,6 +104,10 @@ function cme {
     cd "$@"
     GIT_DIR="$HOME/.dotfiles" GIT_WORK_TREE="$HOME" nvim
     cd "$cwd"
+}
+
+dcdu() { 
+    docker compose down "$@" && docker compose up -d && docker compose logs -f "$@" 
 }
 
 ####################
