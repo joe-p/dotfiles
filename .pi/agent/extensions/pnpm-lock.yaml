@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      pi-openai-usage:
-        specifier: 0.1.4
-        version: 0.1.4(@earendil-works/pi-coding-agent@1.4.0(@aws-sdk/credential-provider-node@3.972.92)(@modelcontextprotocol/sdk@1.32.1(zod@4.3.6))(@smithy/signature-v4@5.7.5)(zod@4.3.6))(@earendil-works/pi-tui@1.4.0)
       pi-web-access:
         specifier: 0.45.0
         version: 0.45.0(@earendil-works/pi-ai@1.4.0(@aws-sdk/credential-provider-node@3.972.92)(@modelcontextprotocol/sdk@1.32.1(zod@4.3.6))(@smithy/signature-v4@5.7.5)(undici@8.10.2)(zod@4.3.6))(@earendil-works/pi-coding-agent@1.4.0(@aws-sdk/credential-provider-node@3.972.92)(@modelcontextprotocol/sdk@1.32.1(zod@4.3.6))(@smithy/signature-v4@5.7.5)(zod@4.3.6))(@earendil-works/pi-tui@1.4.0)(typebox@1.3.27)(zod@4.3.6)
@@ -1012,12 +1009,6 @@ packages:
 
   path-to-regexp@8.4.2:
     resolution: {integrity: sha512-qRcuIdP69NPm4qbACK+aDogI5CBDMi1jKe0ry5rSQJz8JVLsC7jV8XpiJjGRLLol3N+R5ihGYcrPLTno6pAdBA==}
-
-  pi-openai-usage@0.1.4:
-    resolution: {integrity: sha512-wuSyZFeb8q53y1XmuNelzaTjC1QoDycFMu7eJkFeI/7NVkNDCRC/ekp5a+jg8BgjvKBy/08xMDtMJaz8WxelDA==}
-    peerDependencies:
-      '@earendil-works/pi-coding-agent': '*'
-      '@earendil-works/pi-tui': '*'
 
   pi-web-access@0.45.0:
     resolution: {integrity: sha512-AHgUKUas1vvBtdKbcv+7rWTPTIOl8xHR4E7s4dLBAz6soSGGPC4YNq1uVGuH5+bVrMx4X/fmPCm4rsOQIxexdQ==}
@@ -2622,11 +2613,6 @@ snapshots:
   path-key@3.1.1: {}
 
   path-to-regexp@8.4.2: {}
-
-  pi-openai-usage@0.1.4(@earendil-works/pi-coding-agent@1.4.0(@aws-sdk/credential-provider-node@3.972.92)(@modelcontextprotocol/sdk@1.32.1(zod@4.3.6))(@smithy/signature-v4@5.7.5)(zod@4.3.6))(@earendil-works/pi-tui@1.4.0):
-    dependencies:
-      '@earendil-works/pi-coding-agent': 1.4.0(@aws-sdk/credential-provider-node@3.972.92)(@modelcontextprotocol/sdk@1.32.1(zod@4.3.6))(@smithy/signature-v4@5.7.5)(zod@4.3.6)
-      '@earendil-works/pi-tui': 1.4.0
 
   pi-web-access@0.45.0(@earendil-works/pi-ai@1.4.0(@aws-sdk/credential-provider-node@3.972.92)(@modelcontextprotocol/sdk@1.32.1(zod@4.3.6))(@smithy/signature-v4@5.7.5)(undici@8.10.2)(zod@4.3.6))(@earendil-works/pi-coding-agent@1.4.0(@aws-sdk/credential-provider-node@3.972.92)(@modelcontextprotocol/sdk@1.32.1(zod@4.3.6))(@smithy/signature-v4@5.7.5)(zod@4.3.6))(@earendil-works/pi-tui@1.4.0)(typebox@1.3.27)(zod@4.3.6):
     dependencies:

@@ -1,3 +1,5 @@
-import { loadPiPackageExtension } from "./lib/pi-package";
+const extension = await import(
+  new URL("../vendor/pi-openai-usage/index.ts", import.meta.url).href
+);
 
-export default await loadPiPackageExtension("pi-openai-usage");
+export default extension.default;

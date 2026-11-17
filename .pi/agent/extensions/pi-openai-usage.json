@@ -25,5 +25,15 @@
   "colors": {
     "scheme": "none"
   },
-  "refreshIntervalMs": 60000
+  "refreshIntervalMs": 60000,
+  "customEndpoints": [
+    {
+      "name": "model-proxy",
+      "baseUrl": "http://100.101.224.41:8080",
+      "models": ["model-proxy/codex/*"],
+      "auth": {
+        "provider": "model-proxy"
+      }
+    }
+  ]
 }
