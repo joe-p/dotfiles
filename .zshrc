@@ -1,4 +1,12 @@
-autoload -Uz compinit && compinit
+function gc {
+    local org
+    case "$1" in
+        algorand) org=algorand ;;
+        af)       org=algorandfoundation ;;
+        *)        org=$1 ;;
+    esac
+    git clone "https://github.com/$org/$2"
+}
 
 [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
@@ -86,6 +94,17 @@ alias dc='docker compose'
 ####################
 # Functions
 ####################
+
+function gc {
+    local org
+    case "$1" in
+        a)        org=algorand ;;
+        af)       org=algorandfoundation ;;
+        j)        org=joe-p ;;
+        *)        org=$1 ;;
+    esac
+    GIT_TERMINAL_PROMPT=0 git clone "https://github.com/$org/$2" "$HOME/git/$org/$2" || git clone "git@github.com:$org/$2.git" "$HOME/git/$org/$2"
+}
 
 # open in current nvim if in terminal buffer
 # https://github.com/mhinz/neovim-remote
