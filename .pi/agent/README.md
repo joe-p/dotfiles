@@ -80,3 +80,7 @@ The [OpenRouter](./extensions/1000-openrouter.ts) extension adds OpenRouter-spec
 ### TPS: Tokens Per Second
 
 The [TPS](./extensions/1000-tps.ts) is a very simple extension that reports the tokens per second for every LLM message
+
+### System Prompt Viewer
+
+The [system-prompt](./extensions/1000-system-prompt.ts) extension adds `/system-prompt`, which shows the system prompt currently being sent to the model. In the TUI it opens a scrollable overlay (arrows, `PgUp`/`PgDn`, `g`/`G`, mouse wheel) with `e` to open the prompt in the editor and `q` to close. In RPC mode it opens the prompt in the editor dialog, and in print/JSON mode it writes the prompt to a temp file.
