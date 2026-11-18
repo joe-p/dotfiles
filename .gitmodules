@@ -3,4 +3,4 @@
 	url = https://github.com/sindresorhus/pure.git
 [submodule ".pi/agent/vendor/pi-openai-usage"]
 	path = .pi/agent/vendor/pi-openai-usage
-	url = https://github.com/studioarray/pi-openai-usage.git
+	url = https://github.com/joe-p/pi-openai-usage.git
